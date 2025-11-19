@@ -1,0 +1,467 @@
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_OnlineBankSimulation.Tests
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\testhost.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\testhost.exe
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.runner.reporters.netcoreapp10.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.runner.utility.netcoreapp10.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Bold.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-BoldItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraBold.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraBoldItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraLight.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraLightItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Italic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Light.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-LightItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Medium.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-MediumItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Regular.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-SemiBold.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-SemiBoldItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\OFL.txt
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.deps.json
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.runtimeconfig.json
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\AutoMapper.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Azure.Core.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Azure.Identity.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Dapper.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\FluentValidation.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\iTextSharp.LGPLv2.Core.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\MailKit.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Features.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CoreUtilities.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CommunicationUtilities.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CrossPlatEngine.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.Utilities.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\MimeKit.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Newtonsoft.Json.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\NuGet.Frameworks.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\QuestPDF.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\SkiaSharp.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.ClientModel.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Formats.Asn1.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.IO.Pipelines.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Memory.Data.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Text.Json.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.abstractions.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.assert.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.core.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.execution.dotnet.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-arm64\native\libQuestPdfSkia.so
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-arm64\native\libqpdf.so
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-musl-x64\native\libQuestPdfSkia.so
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-musl-x64\native\libqpdf.so
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-x64\native\libQuestPdfSkia.so
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-x64\native\libqpdf.so
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-arm64\native\libQuestPdfSkia.dylib
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-arm64\native\libqpdf.dylib
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-x64\native\libQuestPdfSkia.dylib
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-x64\native\libqpdf.dylib
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\QuestPdfSkia.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libgcc_s_seh-1.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libstdc++-6.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libwinpthread-1.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\qpdf.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\zlib1.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\QuestPdfSkia.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libgcc_s_dw2-1.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libstdc++-6.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libwinpthread-1.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\qpdf.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\zlib1.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Application.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Domain.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Infrastructure.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Application.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Domain.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Infrastructure.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.csproj.AssemblyReference.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.AssemblyInfoInputs.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.AssemblyInfo.cs
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.csproj.CoreCompileInputs.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBa.3F7DD91E.Up2Date
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\refint\OnlineBankSimulation.Tests.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.genruntimeconfig.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\ref\OnlineBankSimulation.Tests.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_OnlineBankSimulation.Tests
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\testhost.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\testhost.exe
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.runner.reporters.netcoreapp10.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.runner.utility.netcoreapp10.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Bold.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-BoldItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraBold.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraBoldItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraLight.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ExtraLightItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Italic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Light.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-LightItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Medium.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-MediumItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Regular.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-SemiBold.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-SemiBoldItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\LatoFont\OFL.txt
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.deps.json
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.runtimeconfig.json
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Tests.pdb
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\AutoMapper.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Azure.Core.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Azure.Identity.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Castle.Core.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Dapper.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\FluentValidation.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.barcodes.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.bouncy-castle-connector.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.forms.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.io.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.kernel.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.layout.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.pdfa.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.sign.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.styledxmlparser.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.svg.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\itext.commons.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\iTextSharp.LGPLv2.Core.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\MailKit.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Features.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.DotNet.PlatformAbstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CoreUtilities.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CommunicationUtilities.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CrossPlatEngine.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.TestPlatform.Utilities.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\MimeKit.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Moq.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\Newtonsoft.Json.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\NuGet.Frameworks.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\QuestPDF.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\SkiaSharp.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.ClientModel.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Formats.Asn1.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.IO.Pipelines.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Memory.Data.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\System.Text.Json.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.abstractions.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.assert.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.core.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\xunit.execution.dotnet.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-arm64\native\libQuestPdfSkia.so
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-arm64\native\libqpdf.so
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-musl-x64\native\libQuestPdfSkia.so
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-musl-x64\native\libqpdf.so
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-x64\native\libQuestPdfSkia.so
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\linux-x64\native\libqpdf.so
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-arm64\native\libQuestPdfSkia.dylib
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-arm64\native\libqpdf.dylib
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-x64\native\libQuestPdfSkia.dylib
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx-x64\native\libqpdf.dylib
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\QuestPdfSkia.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libgcc_s_seh-1.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libstdc++-6.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libwinpthread-1.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\qpdf.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\zlib1.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\QuestPdfSkia.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libgcc_s_dw2-1.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libstdc++-6.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libwinpthread-1.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\qpdf.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\zlib1.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Application.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Domain.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Infrastructure.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Application.pdb
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Domain.pdb
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\bin\Debug\net8.0\OnlineBankSimulation.Infrastructure.pdb
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.csproj.AssemblyReference.cache
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.AssemblyInfoInputs.cache
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.AssemblyInfo.cs
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.csproj.CoreCompileInputs.cache
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBa.3F7DD91E.Up2Date
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\refint\OnlineBankSimulation.Tests.dll
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.pdb
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\OnlineBankSimulation.Tests.genruntimeconfig.cache
+c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Tests\obj\Debug\net8.0\ref\OnlineBankSimulation.Tests.dll

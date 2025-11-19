@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Consolidated Admin Dashboard API</title>
+</head>
+<body>
+    <h1>Admin Dashboard API Test</h1>
+    <button onclick="testConsolidatedAPI()">Test Consolidated API</button>
+    <button onclick="testSeparateAPIs()">Test Separate APIs (Old Way)</button>
+    <div id="results"></div>
+
+    <script>
+        const API_BASE = 'https://localhost:7297/api'; // Update with your API URL
+        
+        async function testConsolidatedAPI() {
+            const startTime = performance.now();
+            const results = document.getElementById('results');
+            results.innerHTML = '<h3>Testing Consolidated API...</h3>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/admin-dashboard/complete`, {
+                    headers: {
+                        'Authorization': 'Bearer YOUR_TOKEN_HERE' // Replace with actual token
+                    }
+                });
+                
+                const endTime = performance.now();
+                const data = await response.json();
+                
+                results.innerHTML += `
+                    <h4>Consolidated API Results:</h4>
+                    <p><strong>Time taken:</strong> ${(endTime - startTime).toFixed(2)}ms</p>
+                    <p><strong>Status:</strong> ${response.status}</p>
+                    <p><strong>Branches count:</strong> ${data.data?.branches?.length || 0}</p>
+                    <p><strong>Analytics data:</strong> ${data.data?.analytics ? 'Present' : 'Missing'}</p>
+                    <p><strong>Branch manager statuses:</strong> ${data.data?.branchManagerStatuses?.length || 0}</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                results.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+        
+        async function testSeparateAPIs() {
+            const startTime = performance.now();
+            const results = document.getElementById('results');
+            results.innerHTML = '<h3>Testing Separate APIs...</h3>';
+            
+            try {
+                const headers = {
+                    'Authorization': 'Bearer YOUR_TOKEN_HERE' // Replace with actual token
+                };
+                
+                // Simulate the old way with multiple API calls
+                const [branchesResponse, analyticsResponse] = await Promise.all([
+                    fetch(`${API_BASE}/branch/all`, { headers }),
+                    fetch(`${API_BASE}/analytics/admin-dashboard`, { headers })
+                ]);
+                
+                const endTime = performance.now();
+                
+                results.innerHTML += `
+                    <h4>Separate APIs Results:</h4>
+                    <p><strong>Time taken:</strong> ${(endTime - startTime).toFixed(2)}ms</p>
+                    <p><strong>Branches status:</strong> ${branchesResponse.status}</p>
+                    <p><strong>Analytics status:</strong> ${analyticsResponse.status}</p>
+                    <p><strong>Note:</strong> This doesn't include branch manager status calls which would add more time</p>
+                `;
+            } catch (error) {
+                results.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

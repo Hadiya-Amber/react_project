@@ -1,0 +1,78 @@
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.AssemblyInfo.cs
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\Microsoft.Azure.Documents.ServiceInterop.dll
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\Cosmos.CRTCompat.dll
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Bold.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-BoldItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraBold.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraBoldItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraLight.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraLightItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Italic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Light.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-LightItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Medium.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-MediumItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Regular.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-SemiBold.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-SemiBoldItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\OFL.txt
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.deps.json
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.runtimeconfig.json
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.dll
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.pdb
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Common.dll
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Core.dll
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Core.pdb
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Common.pdb
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBa.A4F2F401.Up2Date
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.dll
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\refint\OnlineBank.Infrastructure.dll
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.pdb
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.genruntimeconfig.cache
+C:\Users\HP\Source\Repos\OnlineBankSimulation\OnlineBankSimulation.Application\obj\Debug\net8.0\ref\OnlineBank.Infrastructure.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\refint\OnlineBank.Infrastructure.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.csproj.AssemblyReference.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.AssemblyInfoInputs.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.AssemblyInfo.cs
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.csproj.CoreCompileInputs.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Bold.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-BoldItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraBold.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraBoldItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraLight.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ExtraLightItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Italic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Light.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-LightItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Medium.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-MediumItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Regular.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-SemiBold.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-SemiBoldItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\LatoFont\OFL.txt
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.deps.json
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.runtimeconfig.json
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Infrastructure.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Common.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Core.dll
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Core.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\bin\Debug\net8.0\OnlineBank.Common.pdb
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBa.A4F2F401.Up2Date
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBank.Infrastructure.genruntimeconfig.cache
+c:\Users\HP\Desktop\Online Bank Simulation\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\ref\OnlineBank.Infrastructure.dll

@@ -1,0 +1,18 @@
+.formContainer {
+  margin-top: 16px;
+}
+
+.emailText {
+  margin-bottom: 24px;
+}
+
+.alertMessage {
+  margin-bottom: 16px;
+}
+
+.submitButton {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}

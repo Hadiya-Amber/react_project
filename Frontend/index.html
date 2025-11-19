@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:,">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://localhost:7245; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Perfect Bank - Digital Banking Platform</title>
+    <script>
+      // Aggressive extension blocker
+      (function() {
+        const blocked = ['content-all', 'fonts.css', 'en.json'];
+        const isBlocked = (url) => blocked.some(b => url && url.includes(b));
+        
+        // Block fetch
+        if (window.fetch) {
+          const originalFetch = window.fetch;
+          window.fetch = function(input, init) {
+            const url = typeof input === 'string' ? input : input.toString();
+            if (isBlocked(url)) {
+              console.log('🚫 Blocked:', url);
+              return Promise.reject(new Error('Extension resource blocked'));
+            }
+            return originalFetch.call(this, input, init);
+          };
+        }
+        
+        // Block XHR
+        const originalXHROpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function(method, url, ...args) {
+          if (isBlocked(url.toString())) {
+            console.log('🚫 Blocked XHR:', url);
+            throw new Error('Extension XHR blocked');
+          }
+          return originalXHROpen.call(this, method, url, ...args);
+        };
+        
+        // Block createElement
+        const originalCreateElement = document.createElement;
+        document.createElement = function(tagName) {
+          const element = originalCreateElement.call(this, tagName);
+          if (tagName === 'script' || tagName === 'link') {
+            const originalSetSrc = element.setAttribute;
+            element.setAttribute = function(name, value) {
+              if ((name === 'src' || name === 'href') && isBlocked(value)) {
+                console.log('🚫 Blocked element:', value);
+                return;
+              }
+              return originalSetSrc.call(this, name, value);
+            };
+          }
+          return element;
+        };
+        
+        // Remove existing elements periodically
+        setInterval(() => {
+          document.querySelectorAll('script, link').forEach(el => {
+            const src = el.src || el.href;
+            if (src && isBlocked(src)) {
+              el.remove();
+              console.log('🚫 Removed element:', src);
+            }
+          });
+        }, 100);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+import axios, { AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
+import { API_BASE_URL, STORAGE_KEYS } from '@/constants';
+import { showGlobalError, showGlobalWarning } from '@/utils/globalErrorHandler';
+
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 8000, // Reduced timeout to prevent long waits
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// In-flight request de-duplication
+const pending = new Map<string, AbortController>();
+
+function getRequestKey(config: InternalAxiosRequestConfig) {
+  const { method, url, params, data } = config;
+  const p = params ? JSON.stringify(params) : '';
+  const d = typeof data === 'string' ? data : data ? JSON.stringify(data) : '';
+  return [method, url, p, d].join('|');
+}
+
+function addPending(config: InternalAxiosRequestConfig) {
+  const key = getRequestKey(config);
+  // Cancel previous identical pending request to ensure single in-flight call
+  if (pending.has(key)) {
+    const prev = pending.get(key)!;
+    prev.abort();
+    pending.delete(key);
+  }
+  const controller = new AbortController();
+  config.signal = controller.signal;
+  pending.set(key, controller);
+}
+
+function removePending(config: InternalAxiosRequestConfig) {
+  const key = getRequestKey(config);
+  if (pending.has(key)) pending.delete(key);
+}
+
+// Request interceptor
+api.interceptors.request.use(
+  (config) => {
+    addPending(config as InternalAxiosRequestConfig);
+    const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
+    const user = localStorage.getItem(STORAGE_KEYS.USER);
+    
+
+    
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error: AxiosError) => {
+    return Promise.reject(error);
+  }
+);
+
+// Response interceptor
+api.interceptors.response.use(
+  (response: AxiosResponse) => {
+    removePending(response.config as InternalAxiosRequestConfig);
+    return response;
+  },
+  (error: AxiosError) => {
+    if (error.config) removePending(error.config as InternalAxiosRequestConfig);
+    
+    // Don't show errors for canceled requests (de-duplication) or bank stats failures
+    if (error.name === 'CanceledError' || 
+        error.code === 'ERR_CANCELED' ||
+        error.config?.url?.includes('bank-stats') ||
+        error.message?.includes('bank stats')) {
+      return Promise.reject(error);
+    }
+    
+    if (error.response?.status === 401) {
+      // Only redirect if NOT on login page to avoid refresh loop
+      if (!window.location.pathname.includes('/login')) {
+        showGlobalWarning('Session expired. Please login again.');
+        localStorage.removeItem(STORAGE_KEYS.TOKEN);
+        localStorage.removeItem(STORAGE_KEYS.USER);
+        localStorage.removeItem('authenticatedTabId');
+        sessionStorage.removeItem(STORAGE_KEYS.TOKEN);
+        sessionStorage.removeItem(STORAGE_KEYS.USER);
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 2000);
+      }
+    } else if (error.response?.status === 403) {
+      showGlobalError('Access denied. You do not have permission to perform this action.');
+    } else if (error.response?.status && error.response.status >= 500) {
+      showGlobalError('Server error. Please try again later.');
+    } else if (error.code === 'ECONNREFUSED' || error.message?.includes('Network Error')) {
+      showGlobalError('Unable to connect to server. Please check your internet connection.');
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;
