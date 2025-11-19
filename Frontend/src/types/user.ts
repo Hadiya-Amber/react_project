@@ -1,7 +1,7 @@
 export enum UserRole {
-  Customer = 0,
+  Admin = 0,
   BranchManager = 1,
-  Admin = 2
+  Customer = 2
 }
 
 export enum UserStatus {

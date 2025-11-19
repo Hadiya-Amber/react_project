@@ -31,34 +31,39 @@ const DashboardRouter: React.FC = () => {
   }
 
   // Route to appropriate dashboard based on user role
-  switch (user.role) {
-    case UserRole.Admin:
-      return (
-        <AdminDashboardProvider>
-          <AdminDashboardPage />
-        </AdminDashboardProvider>
-      );
-    case UserRole.BranchManager:
-      return (
-        <BranchManagerProvider>
-          <BranchManagerDashboard />
-        </BranchManagerProvider>
-      );
-    case UserRole.Customer:
-      return (
-        <CustomerProvider>
-          <CustomerDashboard />
-        </CustomerProvider>
-      );
-    default:
-      return (
-        <Box textAlign="center" py={4}>
-          <Typography variant="h6" color="error">
-            Unknown user role: {user.role}
-          </Typography>
-        </Box>
-      );
+  const role = user.role as any;
+  
+  if (role === 'Admin' || role === UserRole.Admin || role === 0) {
+    return (
+      <AdminDashboardProvider>
+        <AdminDashboardPage />
+      </AdminDashboardProvider>
+    );
   }
+  
+  if (role === 'BranchManager' || role === UserRole.BranchManager || role === 1) {
+    return (
+      <BranchManagerProvider>
+        <BranchManagerDashboard />
+      </BranchManagerProvider>
+    );
+  }
+  
+  if (role === 'Customer' || role === UserRole.Customer || role === 2) {
+    return (
+      <CustomerProvider>
+        <CustomerDashboard />
+      </CustomerProvider>
+    );
+  }
+  
+  return (
+    <Box textAlign="center" py={4}>
+      <Typography variant="h6" color="error">
+        Unknown user role: {user.role}
+      </Typography>
+    </Box>
+  );
 };
 
 export default DashboardRouter;

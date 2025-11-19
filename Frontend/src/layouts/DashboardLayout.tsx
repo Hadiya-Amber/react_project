@@ -49,7 +49,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const { profileImage } = useProfile();
   
   // Wrap admin users with AdminDashboardProvider to share consolidated data
-  const wrappedChildren = (user?.role === UserRole.Admin) ? (
+  const wrappedChildren = ((user?.role as any) === 'Admin' || (user?.role as any) === UserRole.Admin || (user?.role as any) === 0) ? (
     <AdminDashboardProvider>
       {children}
     </AdminDashboardProvider>
@@ -81,7 +81,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     navigate('/login');
   };
 
-  const isBranchManager = (user?.role as any) === UserRole.BranchManager || (user?.role as any) === 'BranchManager';
+  const isBranchManager = (user?.role as any) === UserRole.BranchManager || (user?.role as any) === 'BranchManager' || (user?.role as any) === 1;
   const currentPath = window.location.pathname;
   const isOnDashboard = currentPath === '/dashboard';
   const showBackButton = isBranchManager && !isOnDashboard;
@@ -93,7 +93,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       { text: 'Transactions', icon: <SwapHoriz />, path: '/transactions' },
     ];
 
-    if ((user?.role as any) === UserRole.Customer || (user?.role as any) === 'Customer') {
+    if ((user?.role as any) === UserRole.Customer || (user?.role as any) === 'Customer' || (user?.role as any) === 2) {
       return [
         { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' },
         { text: 'My Accounts', icon: <AccountBalance />, path: '/accounts' },
@@ -106,7 +106,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       ];
     }
 
-    if ((user?.role as any) === UserRole.Admin || (user?.role as any) === 'Admin') {
+    if ((user?.role as any) === UserRole.Admin || (user?.role as any) === 'Admin' || (user?.role as any) === 0) {
       return [
         { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' },
         { text: 'Accounts', icon: <AccountBalance />, path: '/accounts' },
@@ -154,7 +154,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       
       <Box sx={{ p: 2, backgroundColor: designTokens.colors.neutral[100] }}>
         <Chip 
-          label={user?.role || 'User'} 
+          label={(() => {
+            const role = user?.role as any;
+            if (role === 'Admin' || role === 0 || role === UserRole.Admin) return 'Admin';
+            if (role === 'BranchManager' || role === 1 || role === UserRole.BranchManager) return 'Branch Manager';
+            if (role === 'Customer' || role === 2 || role === UserRole.Customer) return 'Customer';
+            return `Unknown: ${role}`;
+          })()} 
           size="small" 
           sx={{ 
             backgroundColor: designTokens.colors.primary[500],
@@ -265,7 +271,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               fontWeight: 600,
               color: '#FFFFFF',
             }}>
-              {user?.role} Dashboard
+              {(() => {
+                const role = user?.role as any;
+                if (role === 'Admin' || role === 0 || role === UserRole.Admin) return 'Admin';
+                if (role === 'BranchManager' || role === 1 || role === UserRole.BranchManager) return 'Branch Manager';
+                if (role === 'Customer' || role === 2 || role === UserRole.Customer) return 'Customer';
+                return 'User';
+              })()} Dashboard
             </Typography>
             <Typography variant="body2" sx={{ 
               color: 'rgba(255, 255, 255, 0.8)',
