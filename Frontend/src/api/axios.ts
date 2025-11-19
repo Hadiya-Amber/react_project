@@ -57,6 +57,22 @@ api.interceptors.request.use(
   }
 );
 
+// Helper function to get error message based on status code
+function getErrorMessage(status: number): string {
+  switch (status) {
+    case 400: return 'Bad request. Please check your input.';
+    case 401: return 'Authentication required.';
+    case 403: return 'Access denied.';
+    case 404: return 'Resource not found.';
+    case 409: return 'Conflict occurred.';
+    case 422: return 'Validation failed.';
+    case 500: return 'Internal server error.';
+    case 502: return 'Bad gateway.';
+    case 503: return 'Service unavailable.';
+    default: return 'An error occurred.';
+  }
+}
+
 // Response interceptor
 api.interceptors.response.use(
   (response: AxiosResponse) => {
@@ -66,7 +82,7 @@ api.interceptors.response.use(
   (error: AxiosError) => {
     if (error.config) removePending(error.config as InternalAxiosRequestConfig);
     
-    // Don't show errors for canceled requests (de-duplication) or bank stats failures
+    // Don't transform canceled requests or bank stats failures
     if (error.name === 'CanceledError' || 
         error.code === 'ERR_CANCELED' ||
         error.config?.url?.includes('bank-stats') ||
@@ -74,9 +90,10 @@ api.interceptors.response.use(
       return Promise.reject(error);
     }
     
-    if (error.response?.status === 401) {
-      // Only redirect if NOT on login page to avoid refresh loop
-      if (!window.location.pathname.includes('/login')) {
+    // Transform error responses to 200 success with error info in body
+    if (error.response) {
+      // Handle specific status codes for global notifications BEFORE transformation
+      if (error.response.status === 401 && !window.location.pathname.includes('/login')) {
         showGlobalWarning('Session expired. Please login again.');
         localStorage.removeItem(STORAGE_KEYS.TOKEN);
         localStorage.removeItem(STORAGE_KEYS.USER);
@@ -86,12 +103,29 @@ api.interceptors.response.use(
         setTimeout(() => {
           window.location.href = '/login';
         }, 2000);
+      } else if (error.response.status === 403) {
+        showGlobalError('Access denied. You do not have permission to perform this action.');
+      } else if (error.response.status >= 500) {
+        showGlobalError('Server error. Please try again later.');
       }
-    } else if (error.response?.status === 403) {
-      showGlobalError('Access denied. You do not have permission to perform this action.');
-    } else if (error.response?.status && error.response.status >= 500) {
-      showGlobalError('Server error. Please try again later.');
-    } else if (error.code === 'ECONNREFUSED' || error.message?.includes('Network Error')) {
+      
+      // Return transformed response as resolved promise
+      return Promise.resolve({
+        ...error.response,
+        status: 200,
+        statusText: 'OK',
+        data: {
+          success: false,
+          message: (error.response.data as any)?.message || getErrorMessage(error.response.status),
+          data: null,
+          errors: (error.response.data as any)?.errors || null,
+          originalStatus: error.response.status
+        }
+      });
+    }
+    
+    // Handle network errors (no response)
+    if (error.code === 'ECONNREFUSED' || error.message?.includes('Network Error')) {
       showGlobalError('Unable to connect to server. Please check your internet connection.');
     }
     return Promise.reject(error);

@@ -3,15 +3,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { QueryClient, QueryClientProvider, QueryCache, MutationCache } from '@tanstack/react-query'
-import { Provider } from 'react-redux'
-import { store } from '@/store'
-import { AuthProvider } from '@/context/AuthContext'
-import { NotificationProvider } from '@/context/NotificationContext'
-import { ProfileProvider } from '@/context/ProfileContext'
-import ErrorBoundary from '@/components/ErrorBoundary'
-import { theme } from '@/theme'
-import AppRoutes from '@/routes/AppRoutes'
-import ProfessionalLoader from '@/components/ui/ProfessionalLoader'
+import { AuthProvider } from './context/AuthContext'
+import { NotificationProvider } from './context/NotificationContext'
+import { ProfileProvider } from './context/ProfileContext'
+import ErrorBoundary from './components/ErrorBoundary'
+import { theme } from './theme'
+import AppRoutes from './routes/AppRoutes'
+import ProfessionalLoader from './components/ui/ProfessionalLoader'
 
 // Optimized QueryClient to prevent multiple API calls per action
 const queryClient = new QueryClient({
@@ -58,8 +56,7 @@ const AppLoadingFallback = () => (
 const App = memo(() => {
   return (
     <ErrorBoundary>
-      <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <NotificationProvider>
@@ -74,8 +71,7 @@ const App = memo(() => {
               </ProfileProvider>
             </NotificationProvider>
           </ThemeProvider>
-        </QueryClientProvider>
-      </Provider>
+      </QueryClientProvider>
     </ErrorBoundary>
   )
 })

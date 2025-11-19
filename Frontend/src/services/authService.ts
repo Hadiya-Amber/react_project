@@ -46,7 +46,7 @@ export const authService = {
         localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.data.data.user));
         return response.data.data;
       }
-      throw new Error(response.data.message || 'Login failed');
+      throw new Error('Invalid email or password. Please check your credentials and try again.');
     } catch (error: any) {
       throw new Error(getErrorMessage(error));
     }

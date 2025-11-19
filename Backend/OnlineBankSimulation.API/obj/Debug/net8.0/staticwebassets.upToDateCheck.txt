@@ -21,6 +21,7 @@ wwwroot\receipts\receipt_21_20251118_171541.pdf
 wwwroot\receipts\receipt_22_20251118_171736.pdf
 wwwroot\receipts\receipt_24_20251118_222242.pdf
 wwwroot\receipts\receipt_25_20251119_061448.pdf
+wwwroot\receipts\receipt_38_20251119_172321.pdf
 wwwroot\receipts\receipt_8_20251111_170129.pdf
 wwwroot\receipts\receipt_8_20251111_232917.pdf
 wwwroot\receipts\receipt_8_20251111_232937.pdf

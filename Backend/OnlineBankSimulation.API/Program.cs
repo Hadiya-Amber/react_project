@@ -99,6 +99,7 @@ using (var scope = app.Services.CreateScope())
 
 // Middlewares
 app.UseGlobalExceptionMiddleware();
+app.UseStatusCodeTransform();
 app.UseRequestLogging();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

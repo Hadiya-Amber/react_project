@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
+import path from 'path'
 
 export default defineConfig({
   plugins: [
@@ -12,13 +12,12 @@ export default defineConfig({
           // ['babel-plugin-react-compiler', {}]
         ],
       },
-      // Enable Fast Refresh for React 19
-      fastRefresh: true,
+
     }),
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './src'),
       '@mui/styled-engine': '@mui/styled-engine'
     },
   },
@@ -51,7 +50,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
   },
   server: {
-    port: 3000,
+    port: 5173,
     host: true,
     // React 19 HMR optimizations
     hmr: {

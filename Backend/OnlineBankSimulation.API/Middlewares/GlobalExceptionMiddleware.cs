@@ -30,13 +30,15 @@ namespace OnlineBank.API.Middlewares
         private static async Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = 200; // Always return 200
 
             var response = new
             {
-                Success = false,
-                Message = "An unexpected error occurred. Please try again later.",
-                ErrorId = Guid.NewGuid().ToString("N")[..8]
+                success = false,
+                message = "An unexpected error occurred. Please try again later.",
+                data = (object?)null,
+                errors = (object?)null,
+                errorId = Guid.NewGuid().ToString("N")[..8]
             };
 
             await context.Response.WriteAsync(JsonSerializer.Serialize(response));

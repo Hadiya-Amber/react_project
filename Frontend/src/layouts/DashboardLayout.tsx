@@ -97,7 +97,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       return [
         { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' },
         { text: 'My Accounts', icon: <AccountBalance />, path: '/accounts' },
-        { text: 'Transactions', icon: <SwapHoriz />, path: '/transactions' },
         { text: 'Create Account', icon: <Add />, path: '/accounts/create' },
         { text: 'Deposit', icon: <SwapHoriz />, path: '/transactions/deposit' },
         { text: 'Withdraw', icon: <SwapHoriz />, path: '/transactions/withdraw' },
@@ -179,6 +178,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               <ListItemButton 
                 onClick={() => {
                   navigate(item.path);
+                  setMobileOpen(false); // Close mobile drawer on navigation
                 }}
                 selected={isActive}
                 sx={{
@@ -226,8 +226,14 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         position="fixed"
         elevation={0}
         sx={{
-          width: { sm: showHamburger && sidebarOpen ? `calc(100% - ${drawerWidth}px)` : '100%' },
-          ml: { sm: showHamburger && sidebarOpen ? `${drawerWidth}px` : 0 },
+          width: { 
+            xs: '100%',
+            sm: showHamburger && sidebarOpen ? `calc(100% - ${drawerWidth}px)` : '100%' 
+          },
+          ml: { 
+            xs: 0,
+            sm: showHamburger && sidebarOpen ? `${drawerWidth}px` : 0 
+          },
           transition: 'width 0.3s, margin 0.3s',
           background: designTokens.gradients.primary,
           borderBottom: `1px solid ${designTokens.colors.neutral[300]}`,
@@ -391,7 +397,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <Box
           component="nav"
           sx={{ 
-            width: { sm: sidebarOpen ? drawerWidth : 0 }, 
+            width: { 
+              xs: 0,
+              sm: sidebarOpen ? drawerWidth : 0 
+            }, 
             flexShrink: { sm: 0 },
             transition: 'width 0.3s',
           }}
@@ -438,7 +447,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         sx={{
           flexGrow: 1,
           p: { xs: 1, sm: 2, md: 3 },
-          width: { sm: showHamburger && sidebarOpen ? `calc(100% - ${drawerWidth}px)` : '100%' },
+          width: { 
+            xs: '100%',
+            sm: showHamburger && sidebarOpen ? `calc(100% - ${drawerWidth}px)` : '100%' 
+          },
           transition: 'width 0.3s',
           backgroundColor: designTokens.colors.neutral[100],
           minHeight: '100vh',

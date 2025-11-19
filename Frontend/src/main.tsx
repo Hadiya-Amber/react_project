@@ -2,12 +2,8 @@ import { createRoot } from 'react-dom/client'
 import { startTransition } from 'react'
 import App from './App.tsx'
 import './utils/errorHandler'
-import { initBankEasePerformance } from './utils/bankeasePerformance'
 import { initExtensionErrorSuppression } from './utils/extensionErrorSuppression'
 import './utils/extensionBlocker'
-
-// Initialize BankEase performance monitoring
-initBankEasePerformance()
 
 // Initialize browser extension error suppression
 initExtensionErrorSuppression()
