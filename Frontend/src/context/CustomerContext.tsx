@@ -84,6 +84,14 @@ export const CustomerProvider: React.FC<CustomerProviderProps> = ({ children }) 
     setLastFetch(0);
     setLoading(true);
   };
+  
+  const invalidateAllCache = () => {
+    // Clear entire cache map for all users
+    userCacheMap.clear();
+    setData(null);
+    setLastFetch(0);
+    setLoading(true);
+  };
 
   // Method to update data from external source (analytics service)
   const updateData = (newData: CustomerCompleteDashboardData) => {
@@ -103,13 +111,15 @@ export const CustomerProvider: React.FC<CustomerProviderProps> = ({ children }) 
     invalidateCache,
   };
 
-  // Expose updateData method globally for analytics service to use
+  // Expose updateData and invalidate methods globally
   React.useEffect(() => {
     if (user) {
       (window as any).__customerContextUpdate = updateData;
+      (window as any).__customerContextInvalidate = invalidateAllCache;
     }
     return () => {
       delete (window as any).__customerContextUpdate;
+      delete (window as any).__customerContextInvalidate;
     };
   }, [user]);
 

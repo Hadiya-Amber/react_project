@@ -313,22 +313,46 @@ const AdminDashboardPage: React.FC = React.memo(() => {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {dashboardData.recentActivities.map((activity: any, index: number) => (
-                          <TableRow key={index}>
-                            <TableCell>
-                              <Chip label={activity.activityType} size="small" />
-                            </TableCell>
-                            <TableCell>{activity.description}</TableCell>
-                            <TableCell>{activity.userName || 'N/A'}</TableCell>
-                            <TableCell>{activity.branchName || 'N/A'}</TableCell>
-                            <TableCell>
-                              {activity.amount ? `₹${activity.amount.toLocaleString()}` : 'N/A'}
-                            </TableCell>
-                            <TableCell>
-                              {new Date(activity.timestamp).toLocaleString()}
-                            </TableCell>
-                          </TableRow>
-                        ))}
+                        {dashboardData.recentActivities.map((activity: any, index: number) => {
+                          const getTransactionTypeLabel = (activityType: string) => {
+                            switch (activityType?.toLowerCase()) {
+                              case 'deposit': return 'Cash Deposit';
+                              case 'withdrawal': return 'Cash Withdrawal';
+                              case 'transfer': return 'Money Transfer';
+                              default: return activityType || 'Transaction';
+                            }
+                          };
+                          
+                          const getTransactionColor = (activityType: string) => {
+                            switch (activityType?.toLowerCase()) {
+                              case 'deposit': return 'success';
+                              case 'withdrawal': return 'error';
+                              case 'transfer': return 'warning';
+                              default: return 'default';
+                            }
+                          };
+                          
+                          return (
+                            <TableRow key={index}>
+                              <TableCell>
+                                <Chip 
+                                  label={getTransactionTypeLabel(activity.activityType)}
+                                  size="small" 
+                                  color={getTransactionColor(activity.activityType)}
+                                />
+                              </TableCell>
+                              <TableCell>{activity.description || `${getTransactionTypeLabel(activity.activityType)} of ₹${activity.amount?.toLocaleString()}`}</TableCell>
+                              <TableCell>{activity.userName || 'N/A'}</TableCell>
+                              <TableCell>{activity.branchName || 'N/A'}</TableCell>
+                              <TableCell>
+                                {activity.amount ? `₹${Math.abs(activity.amount).toLocaleString()}` : 'N/A'}
+                              </TableCell>
+                              <TableCell>
+                                {new Date(activity.timestamp).toLocaleString()}
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })}
                       </TableBody>
                     </Table>
                   </TableContainer>

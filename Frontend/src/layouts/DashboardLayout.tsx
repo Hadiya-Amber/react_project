@@ -233,7 +233,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           borderBottom: `1px solid ${designTokens.colors.neutral[300]}`,
         }}
       >
-        <Toolbar sx={{ minHeight: '64px !important', px: 3 }}>
+        <Toolbar sx={{ minHeight: '64px !important', px: { xs: 1, sm: 3 } }}>
           {showBackButton ? (
             <IconButton
               color="inherit"
@@ -250,20 +250,38 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               <ArrowBack />
             </IconButton>
           ) : showHamburger ? (
-            <IconButton
-              color="inherit"
-              aria-label="toggle drawer"
-              edge="start"
-              onClick={handleSidebarToggle}
-              sx={{ 
-                mr: 2,
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                }
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <>
+              <IconButton
+                color="inherit"
+                aria-label="toggle mobile drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ 
+                  mr: 2,
+                  display: { sm: 'none' },
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  }
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <IconButton
+                color="inherit"
+                aria-label="toggle desktop drawer"
+                edge="start"
+                onClick={handleSidebarToggle}
+                sx={{ 
+                  mr: 2,
+                  display: { xs: 'none', sm: 'block' },
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  }
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </>
           ) : null}
           
           <Box sx={{ flexGrow: 1 }}>
@@ -290,60 +308,29 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           <Box display="flex" alignItems="center" gap={2}>
             <NotificationCenter />
             
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 1,
-              px: 2,
-              py: 1,
-              borderRadius: 2,
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-            }}>
+            <IconButton
+              onClick={handleProfileMenuOpen}
+              sx={{ 
+                p: 0.5,
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                }
+              }}
+            >
               <Avatar 
                 src={profileImage || undefined}
                 sx={{ 
-                  width: 36, 
-                  height: 36,
+                  width: 40, 
+                  height: 40,
                   backgroundColor: designTokens.colors.accent[500],
                   color: designTokens.colors.neutral[800],
                   fontWeight: 600,
+                  cursor: 'pointer',
                 }}
               >
                 {!profileImage && (user?.fullName?.charAt(0) || 'U')}
               </Avatar>
-              <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                <Typography variant="body2" sx={{ 
-                  color: '#FFFFFF',
-                  fontWeight: 500,
-                  lineHeight: 1.2,
-                }}>
-                  {user?.fullName}
-                </Typography>
-                <Typography variant="caption" sx={{ 
-                  color: 'rgba(255, 255, 255, 0.7)',
-                  fontSize: '0.75rem',
-                }}>
-                  {user?.email}
-                </Typography>
-              </Box>
-              <IconButton
-                size="small"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                sx={{ 
-                  color: '#FFFFFF',
-                  '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  }
-                }}
-              >
-                <MenuIcon fontSize="small" />
-              </IconButton>
-            </Box>
+            </IconButton>
           </Box>
           <Menu
             anchorEl={anchorEl}
@@ -450,7 +437,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: { xs: 2, sm: 3 },
+          p: { xs: 1, sm: 2, md: 3 },
           width: { sm: showHamburger && sidebarOpen ? `calc(100% - ${drawerWidth}px)` : '100%' },
           transition: 'width 0.3s',
           backgroundColor: designTokens.colors.neutral[100],

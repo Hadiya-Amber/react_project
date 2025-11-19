@@ -45,7 +45,9 @@ import { useNotification } from '@/context/NotificationContext';
 import { NotificationType } from '@/types/notification';
 import { useAdminDashboard } from '@/context/AdminDashboardContext';
 import { useCustomer } from '@/context/CustomerContext';
-import { getTransactionDisplayData } from '@/utils/transactionUtils';
+import { getTransactionDisplayData, getTransactionDirection } from '@/utils/transactionUtils';
+import { ResponsiveLayout } from '@/components/ResponsiveLayout';
+import { responsiveMixins } from '@/theme/responsive';
 
 const getTransactionTypeLabel = (type: TransactionType | number): string => {
   switch (Number(type)) {
@@ -115,71 +117,105 @@ const filterReducer = (state: FilterState, action: FilterAction): FilterState =>
 
 // Memoized transaction row component
 const TransactionRow = memo(({ transaction, onDownloadReceipt, userRole, userAccountNumber }: any) => {
-  // Get properly formatted transaction data
-  const displayData = getTransactionDisplayData(transaction, userAccountNumber);
+  // Use pre-calculated display data if available, otherwise calculate it
+  const displayData = transaction.displayData || getTransactionDisplayData(transaction, userAccountNumber);
   
   return (
     <TableRow>
       <TableCell>
         <Box display="flex" alignItems="center" gap={1}>
-          {displayData.direction === TransactionDirection.Credit ? 
-            <ArrowDownward sx={{ color: 'success.main', fontSize: 16 }} /> :
-            <ArrowUpward sx={{ color: 'error.main', fontSize: 16 }} />
-          }
+          {(userRole !== 'Admin' && userRole !== UserRole.Admin) && (
+            displayData.direction === TransactionDirection.Credit ? 
+              <ArrowDownward sx={{ color: 'success.main', fontSize: 16 }} /> :
+              <ArrowUpward sx={{ color: 'error.main', fontSize: 16 }} />
+          )}
           <Typography variant="body2">
-            {new Date(displayData.transactionDate).toLocaleDateString()}
+            {(() => {
+              if (!displayData.transactionDate) return 'N/A';
+              const date = new Date(displayData.transactionDate);
+              if (isNaN(date.getTime())) return 'N/A';
+              return date.toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit', 
+                year: 'numeric'
+              });
+            })()}
           </Typography>
         </Box>
       </TableCell>
       <TableCell>
         <Typography variant="body2" fontWeight="medium">
-          {displayData.displayDescription || displayData.type || 'Transaction'}
+          {displayData.displayDescription || getTransactionTypeLabel(displayData.transactionType)}
         </Typography>
-        {displayData.description && (
+        {displayData.description && displayData.description !== displayData.displayDescription && (
           <Typography variant="caption" color="text.secondary" display="block">
             {displayData.description}
           </Typography>
         )}
       </TableCell>
-      <TableCell>
-        <Typography variant="body2">
-          {displayData.otherPartyName || 'N/A'}
-        </Typography>
-        {displayData.otherPartyAccount && (
-          <Typography variant="caption" color="text.secondary" display="block">
-            {displayData.otherPartyAccount}
-          </Typography>
-        )}
-      </TableCell>
-      <TableCell>
-        <Typography
-          variant="body2"
-          fontWeight="bold"
-          color={displayData.direction === TransactionDirection.Credit ? 'success.main' : 'error.main'}
-        >
-          {displayData.formattedAmount}
-        </Typography>
-        {displayData.balanceAfterTransaction !== undefined && displayData.balanceAfterTransaction !== null && (
-          <Typography variant="caption" color="text.secondary" display="block">
-            Balance: ₹{displayData.balanceAfterTransaction.toLocaleString()}
-          </Typography>
-        )}
-      </TableCell>
+      {(userRole === 'Admin' || userRole === UserRole.Admin) ? (
+        <>
+          <TableCell>
+            <Typography variant="body2" fontWeight="medium">
+              {displayData.fromAccountNumber || 'N/A'}
+            </Typography>
+            {displayData.fromAccountNumber && (
+              <Typography variant="caption" color="error.main" display="block">
+                -₹{displayData.amount.toLocaleString()}
+              </Typography>
+            )}
+          </TableCell>
+          <TableCell>
+            <Typography variant="body2" fontWeight="medium">
+              {displayData.toAccountNumber || 'N/A'}
+            </Typography>
+            {displayData.toAccountNumber && (
+              <Typography variant="caption" color="success.main" display="block">
+                +₹{displayData.amount.toLocaleString()}
+              </Typography>
+            )}
+          </TableCell>
+        </>
+      ) : (
+        <>
+          <TableCell>
+            <Typography variant="body2">
+              {displayData.otherPartyName || 'N/A'}
+            </Typography>
+            {displayData.otherPartyAccount && (
+              <Typography variant="caption" color="text.secondary" display="block">
+                {displayData.otherPartyAccount}
+              </Typography>
+            )}
+          </TableCell>
+          <TableCell>
+            <Typography
+              variant="body2"
+              fontWeight="bold"
+              color={displayData.direction === TransactionDirection.Credit ? 'success.main' : 'error.main'}
+            >
+              {displayData.formattedAmount}
+            </Typography>
+          </TableCell>
+        </>
+      )}
       <TableCell>
         <Typography variant="body2">
           {displayData.reference || displayData.transactionReference || displayData.transactionId || 'N/A'}
         </Typography>
       </TableCell>
-      <TableCell>
-        <Button
-          size="small"
-          onClick={() => onDownloadReceipt(displayData.id)}
-          disabled={displayData.status === 4}
-          startIcon={userRole === 'Customer' || userRole === UserRole.Customer ? undefined : <Visibility />}
-        >
-          {userRole === 'Customer' || userRole === UserRole.Customer ? 'Receipt' : ''}
-        </Button>
-      </TableCell>
+      {(userRole !== 'Admin' && userRole !== UserRole.Admin) && (
+        <TableCell>
+          <Button
+            size="small"
+            onClick={() => onDownloadReceipt(displayData.id)}
+            disabled={displayData.status === 4}
+            startIcon={userRole === 'Customer' || userRole === UserRole.Customer ? undefined : <Visibility />}
+          >
+            {userRole === 'Customer' || userRole === UserRole.Customer ? 'Receipt' : ''}
+          </Button>
+        </TableCell>
+      )}
     </TableRow>
   );
 });
@@ -208,6 +244,7 @@ const TransactionsPage: React.FC = () => {
   const [page, setPage] = useState(1);
 
   const [hasApprovedAccount, setHasApprovedAccount] = useState(false);
+  const [autoRefresh, setAutoRefresh] = useState(true);
 
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -246,12 +283,16 @@ const TransactionsPage: React.FC = () => {
   }, [accountNumber]);
 
   useEffect(() => {
+    // Clear transaction history when user changes to prevent cross-user contamination
+    setTransactionHistory(null);
+    setLoading(true);
+    
     if ((user?.role as any) === 'Customer' || (user?.role as any) === UserRole.Customer) {
       checkAccountApprovalAndFetchTransactions();
     } else {
       fetchAllTransactions();
     }
-  }, [user?.role, selectedAccountNumber, adminDashboardData?.data, adminDashboardData?.loading]);
+  }, [user?.id, user?.role, selectedAccountNumber, adminDashboardData?.data, adminDashboardData?.loading, customerData?.data?.personalInfo]);
 
   // Separate effect for filters to avoid excessive re-renders
   useEffect(() => {
@@ -270,88 +311,77 @@ const TransactionsPage: React.FC = () => {
     setPage(1);
   }, [filters, adminDashboardData?.data]);
 
-  const checkAccountApprovalAndFetchTransactions = async () => {
-    // Wait for customer data to load
-    if (customerData?.loading) {
-      setLoading(true);
-      return;
-    }
+  // Auto-refresh transactions every 30 seconds
+  useEffect(() => {
+    if (!autoRefresh || !user?.id) return;
     
-    // If we have consolidated customer data, use it directly
-    if (customerData?.data) {
-      try {
-        const accounts = customerData.data.accountDetails || [];
-        const approved = accounts.some(acc => acc.status === AccountStatus.Active && acc.isActive);
-        setHasApprovedAccount(approved);
-        
-        if (approved) {
-          // Check if we need filtered data or can use consolidated data
-          const hasDateFilters = filters.fromDate || filters.toDate;
-          const hasAccountFilter = selectedAccountNumber || filters.accountNumber;
-          
-          if (!hasDateFilters && !hasAccountFilter && customerData.data.recentTransactions) {
-            // Use consolidated data to avoid API call
-            const consolidatedTransactions = customerData.data.recentTransactions;
-            
-            const data = {
-              transactions: consolidatedTransactions.map(t => ({
-                id: t.transactionId,
-                transactionId: t.transactionId.toString(),
-                transactionReference: t.transactionId.toString(),
-                fromAccountId: null,
-                fromAccountNumber: '',
-                fromAccountHolderName: '',
-                toAccountId: null,
-                toAccountNumber: '',
-                toAccountHolderName: '',
-                amount: t.amount,
-                transactionType: t.type === 'Deposit' ? 0 : t.type === 'Withdrawal' ? 1 : 2,
-                status: t.status === 'Completed' ? 2 : 0,
-                description: t.description || `${t.type} transaction`,
-                reference: t.transactionId.toString(),
-                transactionDate: t.date,
-                direction: t.type.includes('Received') || t.type === 'Deposit' || t.type === 'Money Received' ? 1 : 0,
-                displayDescription: t.type,
-                otherPartyName: t.type === 'Deposit' ? 'Cash Deposit' : 
-                                t.type === 'Withdrawal' ? 'Cash Withdrawal' : 
-                                t.type.includes('Transfer') ? 'Money Transfer' : 
-                                t.type.includes('Received') ? 'Money Received' : 'Transaction',
-                otherPartyAccount: t.type.includes('Transfer') ? 'Internal Transfer' : '',
-                balanceAfterTransaction: undefined
-              })),
-              currentBalance: customerData.data.personalInfo?.totalBalance || 0,
-              totalCredits: 0,
-              totalDebits: 0,
-              totalTransactions: consolidatedTransactions.length,
-              accountNumber: 'All Accounts',
-              accountHolderName: customerData.data.personalInfo?.fullName || ''
-            };
-            setTransactionHistory(data);
-          } else {
-            // Only make API call when date/account filters are applied
-            const fromDate = filters.fromDate ? new Date(filters.fromDate) : undefined;
-            const toDate = filters.toDate ? new Date(filters.toDate) : undefined;
-            const targetAccountNumber = selectedAccountNumber || filters.accountNumber || undefined;
-            
-            const data = await transactionService.getUserTransactionHistory(fromDate, toDate, targetAccountNumber);
-            setTransactionHistory(data);
-          }
-        } else {
-          setTransactionHistory(null);
-        }
-      } catch (error) {
-        setHasApprovedAccount(false);
-        setTransactionHistory(null);
-      } finally {
-        setLoading(false);
+    const interval = setInterval(() => {
+      // Only refresh if user is still authenticated
+      if (!user?.id) {
+        setAutoRefresh(false);
+        return;
       }
-      return;
+      
+      if ((user?.role as any) === 'Customer' || (user?.role as any) === UserRole.Customer) {
+        checkAccountApprovalAndFetchTransactions();
+      } else {
+        fetchAllTransactions();
+      }
+    }, 30000); // Refresh every 30 seconds
+
+    return () => clearInterval(interval);
+  }, [autoRefresh, user?.id, user?.role]);
+
+  const checkAccountApprovalAndFetchTransactions = async () => {
+    try {
+      // Check if user is still authenticated
+      if (!user?.id) {
+        console.log('User not authenticated, skipping transaction fetch');
+        return;
+      }
+      
+      // Use consolidated customer data if available (no additional API calls)
+      if (customerData?.data?.recentTransactions && !filters.fromDate && !filters.toDate && !selectedAccountNumber) {
+        console.log('Using consolidated customer data for transactions');
+        const consolidatedData: UserTransactionHistoryDto = {
+          transactions: customerData.data.recentTransactions as unknown as TransactionDetailDto[],
+          currentBalance: customerData.data.personalInfo?.totalBalance || 0,
+          totalCredits: 0, // Will be calculated by frontend
+          totalDebits: 0, // Will be calculated by frontend
+          totalTransactions: customerData.data.recentTransactions?.length || 0,
+          accountNumber: 'All Accounts',
+          accountHolderName: customerData.data.personalInfo?.fullName || 'Customer'
+        };
+        setTransactionHistory(consolidatedData);
+        setHasApprovedAccount(true);
+        setLoading(false);
+        return;
+      }
+      
+      // Only make API call if filters are applied or consolidated data not available
+      const fromDate = filters.fromDate ? new Date(filters.fromDate) : undefined;
+      const toDate = filters.toDate ? new Date(filters.toDate) : undefined;
+      const targetAccountNumber = selectedAccountNumber || filters.accountNumber || undefined;
+      
+      console.log('Making API call for filtered transactions');
+      const data = await transactionService.getUserTransactionHistory(fromDate, toDate, targetAccountNumber);
+      setTransactionHistory(data);
+      setHasApprovedAccount(true);
+    } catch (error: any) {
+      console.error('Failed to fetch user transactions:', error);
+      
+      // If it's an authentication error, don't show error notification
+      if (error?.response?.status === 401 || error?.response?.status === 403) {
+        console.log('Authentication error, user will be redirected to login');
+        setAutoRefresh(false);
+        return;
+      }
+      
+      setHasApprovedAccount(false);
+      setTransactionHistory(null);
+    } finally {
+      setLoading(false);
     }
-    
-    // If no customer data available after loading, show empty state
-    setLoading(false);
-    setHasApprovedAccount(false);
-    setTransactionHistory(null);
   };
 
   const fetchAllTransactions = async () => {
@@ -370,17 +400,36 @@ const TransactionsPage: React.FC = () => {
           // Convert to UserTransactionHistoryDto format for compatibility
           const adminData: UserTransactionHistoryDto = {
             transactions: allTransactions.map(t => {
-              // Map transaction type from string to number
-              let transactionTypeNum = 0;
-              if (t.transactionType === 'Deposit') transactionTypeNum = 0;
-              else if (t.transactionType === 'Withdrawal') transactionTypeNum = 1;
-              else if (t.transactionType === 'Transfer') transactionTypeNum = 2;
+              // Use transaction type directly as it's already a number
+              const transactionTypeNum = Number(t.transactionType);
               
               // Map status from string to number
               let statusNum = 2; // Default to completed
               if (t.status === 'Pending') statusNum = 0;
               else if (t.status === 'Processing') statusNum = 1;
               else if (t.status === 'Completed') statusNum = 2;
+              
+              // For admin view, show proper transaction details
+              let otherPartyName = '';
+              let description = t.description || '';
+              
+              switch (transactionTypeNum) {
+                case 0: // Deposit
+                  otherPartyName = 'Cash Deposit';
+                  if (!description) description = `Cash Deposit to ${t.toAccountNumber || 'Account'}`;
+                  break;
+                case 1: // Withdrawal
+                  otherPartyName = 'Cash Withdrawal';
+                  if (!description) description = `Cash Withdrawal from ${t.fromAccountNumber || 'Account'}`;
+                  break;
+                case 2: // Transfer
+                  otherPartyName = `Transfer: ${t.fromAccountNumber || 'Unknown'} → ${t.toAccountNumber || 'Unknown'}`;
+                  if (!description) description = `Money Transfer from ${t.fromAccountNumber || 'Account'} to ${t.toAccountNumber || 'Account'}`;
+                  break;
+                default:
+                  otherPartyName = getTransactionTypeLabel(transactionTypeNum);
+                  if (!description) description = `${getTransactionTypeLabel(transactionTypeNum)} - ₹${t.amount}`;
+              }
               
               return {
                 id: t.id,
@@ -392,17 +441,15 @@ const TransactionsPage: React.FC = () => {
                 toAccountId: t.toAccountId,
                 toAccountNumber: t.toAccountNumber || '',
                 toAccountHolderName: '',
-                amount: t.amount,
+                amount: Math.abs(t.amount), // Always positive for display
                 transactionType: transactionTypeNum,
                 status: statusNum,
-                description: t.description,
+                description: description,
                 reference: t.reference || t.transactionReference || t.transactionId,
                 transactionDate: t.transactionDate,
-                direction: transactionTypeNum === 0 ? TransactionDirection.Credit : 
-                          transactionTypeNum === 1 ? TransactionDirection.Debit :
-                          TransactionDirection.Debit, // Default for transfers
+                direction: TransactionDirection.Credit, // For admin view, don't show direction signs
                 displayDescription: getTransactionTypeLabel(transactionTypeNum),
-                otherPartyName: t.toAccountNumber || t.fromAccountNumber || (transactionTypeNum === 0 ? 'Cash Deposit' : transactionTypeNum === 1 ? 'Cash Withdrawal' : 'Internal Transfer'),
+                otherPartyName: otherPartyName,
                 otherPartyAccount: '',
                 balanceAfterTransaction: undefined
               };
@@ -449,17 +496,20 @@ const TransactionsPage: React.FC = () => {
           transaction.toAccountNumber === selectedAccountNumber;
         if (!matchesAccount) return false;
       }
-      // Date filters
+      // Date filters - normalize dates to avoid timezone issues
       if (filters.fromDate) {
+        if (!transaction.transactionDate) return false;
         const transactionDate = new Date(transaction.transactionDate);
-        const fromDate = new Date(filters.fromDate);
+        if (isNaN(transactionDate.getTime())) return false;
+        const fromDate = new Date(filters.fromDate + 'T00:00:00');
         if (transactionDate < fromDate) return false;
       }
       
       if (filters.toDate) {
+        if (!transaction.transactionDate) return false;
         const transactionDate = new Date(transaction.transactionDate);
-        const toDate = new Date(filters.toDate);
-        toDate.setHours(23, 59, 59, 999); // Include the entire day
+        if (isNaN(transactionDate.getTime())) return false;
+        const toDate = new Date(filters.toDate + 'T23:59:59.999Z');
         if (transactionDate > toDate) return false;
       }
       
@@ -510,37 +560,57 @@ const TransactionsPage: React.FC = () => {
     // For customers, implement real-world banking transaction logic
     if ((user?.role as any) === 'Customer' || (user?.role as any) === UserRole.Customer) {
       // Sort by date (oldest first) for proper running balance calculation
-      const sortedTransactions = [...filtered].sort((a, b) => 
-        new Date(a.transactionDate).getTime() - new Date(b.transactionDate).getTime()
-      );
+      const sortedTransactions = [...filtered].sort((a, b) => {
+        const dateA = new Date(a.transactionDate);
+        const dateB = new Date(b.transactionDate);
+        
+        // Handle invalid dates - put them at the end
+        if (isNaN(dateA.getTime()) && isNaN(dateB.getTime())) return 0;
+        if (isNaN(dateA.getTime())) return 1;
+        if (isNaN(dateB.getTime())) return -1;
+        
+        return dateA.getTime() - dateB.getTime();
+      });
 
       // Simple correct approach: Work backwards from current balance
       let currentBalance = transactionHistory.currentBalance;
       
-      // Work backwards from newest to oldest (reverse chronological)
-      for (let i = sortedTransactions.length - 1; i >= 0; i--) {
-        const transaction = sortedTransactions[i];
-        
-        // This transaction shows the balance AFTER it was processed
-        transaction.balanceAfterTransaction = currentBalance;
-        
-        // Calculate what the balance was BEFORE this transaction
-        if (transaction.direction === TransactionDirection.Credit) {
-          // Money came in, so before this transaction balance was less
-          currentBalance -= transaction.amount;
-        } else {
-          // Money went out, so before this transaction balance was more
-          currentBalance += transaction.amount;
-        }
+      // Pre-calculate display data for all transactions to avoid repeated calculations
+      const transactionsWithDisplayData = sortedTransactions.map(transaction => {
+        const displayData = getTransactionDisplayData(transaction, selectedAccountNumber || transactionHistory?.accountNumber);
+        return {
+          ...transaction,
+          displayData,
+          // Override with enhanced display data for better UX
+          displayDescription: displayData.displayDescription,
+          otherPartyName: displayData.otherPartyName
+        };
+      });
+      
+      // Don't calculate balance - use backend provided balance or hide it
+      // The balance calculation should come from backend for accuracy
+      for (let i = 0; i < transactionsWithDisplayData.length; i++) {
+        const transaction = transactionsWithDisplayData[i];
+        // Only show balance if it's the user's own account transaction
+        // For now, hide balance to avoid confusion until backend provides correct balance
+        transaction.balanceAfterTransaction = undefined;
       }
 
       // Return in reverse chronological order (newest first) - real banking standard
-      return sortedTransactions.reverse();
+      return transactionsWithDisplayData.reverse();
     } else {
       // For admin/branch manager, don't show balance (they see all accounts)
-      return [...filtered].sort((a, b) => 
-        new Date(b.transactionDate).getTime() - new Date(a.transactionDate).getTime()
-      );
+      return [...filtered].sort((a, b) => {
+        const dateA = new Date(a.transactionDate);
+        const dateB = new Date(b.transactionDate);
+        
+        // Handle invalid dates - put them at the end
+        if (isNaN(dateA.getTime()) && isNaN(dateB.getTime())) return 0;
+        if (isNaN(dateA.getTime())) return 1;
+        if (isNaN(dateB.getTime())) return -1;
+        
+        return dateB.getTime() - dateA.getTime();
+      });
     }
   }, [transactionHistory?.transactions, transactionHistory?.currentBalance, debouncedSearch, filters.type, filters.status, filters.accountType, filters.fromDate, filters.toDate, user?.role]);
 
@@ -554,7 +624,7 @@ const TransactionsPage: React.FC = () => {
     let totalDebits = 0;
 
     filteredTransactions.forEach(transaction => {
-      const displayData = getTransactionDisplayData(transaction, selectedAccountNumber || transactionHistory?.accountNumber);
+      const displayData = (transaction as any).displayData || getTransactionDisplayData(transaction, selectedAccountNumber || transactionHistory?.accountNumber);
       
       if (displayData.direction === TransactionDirection.Credit) {
         totalCredits += displayData.amount;
@@ -637,16 +707,18 @@ const TransactionsPage: React.FC = () => {
   // };
 
   return (
-    <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-        <Typography variant="h4">
+    <ResponsiveLayout>
+      <Box sx={{ width: '100%', overflow: 'hidden' }}>
+      <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'stretch', sm: 'center' }} gap={2} mb={3}>
+        <Typography variant="h4" sx={{ wordBreak: 'break-word', fontSize: { xs: '1.5rem', sm: '2rem' } }}>
           {selectedAccountNumber ? `Account Statement - ${String(selectedAccountNumber).replace(/[<>"'&]/g, '')}` : 'Transaction History'}
         </Typography>
-        <Box display="flex" gap={1}>
+        <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} gap={1}>
           <Button
             variant="outlined"
             startIcon={<Download />}
             onClick={downloadStatement}
+            size="small"
           >
             Download Statement
           </Button>
@@ -655,6 +727,7 @@ const TransactionsPage: React.FC = () => {
               variant="contained"
               startIcon={<Add />}
               onClick={() => navigate('/transactions/transfer')}
+              size="small"
             >
               New Transfer
             </Button>
@@ -670,26 +743,28 @@ const TransactionsPage: React.FC = () => {
           </Box>
           <Grid container spacing={2}>
             {((user?.role as any) === 'BranchManager' || (user?.role as any) === UserRole.BranchManager) && (
-              <Grid item xs={12} md={2}>
+              <Grid item xs={12} sm={6} md={4} lg={2}>
                 <TextField
                   fullWidth
                   label="Account Number"
                   value={filters.accountNumber}
                   onChange={(e) => dispatchFilter({ type: 'SET_FILTER', field: 'accountNumber', value: e.target.value })}
                   placeholder="Search by account..."
+                  size="small"
                 />
               </Grid>
             )}
-            <Grid item xs={12} md={2}>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
               <TextField
                 fullWidth
                 label="Search"
                 value={filters.search}
                 onChange={(e) => dispatchFilter({ type: 'SET_FILTER', field: 'search', value: e.target.value })}
                 placeholder="Description, amount..."
+                size="small"
               />
             </Grid>
-            <Grid item xs={12} md={2}>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
               <TextField
                 fullWidth
                 type="date"
@@ -697,9 +772,10 @@ const TransactionsPage: React.FC = () => {
                 value={filters.fromDate}
                 onChange={(e) => dispatchFilter({ type: 'SET_FILTER', field: 'fromDate', value: e.target.value })}
                 InputLabelProps={{ shrink: true }}
+                size="small"
               />
             </Grid>
-            <Grid item xs={12} md={2}>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
               <TextField
                 fullWidth
                 type="date"
@@ -707,10 +783,11 @@ const TransactionsPage: React.FC = () => {
                 value={filters.toDate}
                 onChange={(e) => dispatchFilter({ type: 'SET_FILTER', field: 'toDate', value: e.target.value })}
                 InputLabelProps={{ shrink: true }}
+                size="small"
               />
             </Grid>
-            <Grid item xs={12} md={2}>
-              <FormControl fullWidth>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
+              <FormControl fullWidth size="small">
                 <InputLabel>Transaction Type</InputLabel>
                 <Select
                   value={filters.type}
@@ -727,8 +804,8 @@ const TransactionsPage: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={2}>
-              <FormControl fullWidth>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
+              <FormControl fullWidth size="small">
                 <InputLabel>Direction</InputLabel>
                 <Select
                   value={filters.accountType}
@@ -736,13 +813,13 @@ const TransactionsPage: React.FC = () => {
                   onChange={(e) => dispatchFilter({ type: 'SET_FILTER', field: 'accountType', value: e.target.value })}
                 >
                   <MenuItem value="">All</MenuItem>
-                  <MenuItem value="credit">Money In (Credits)</MenuItem>
-                  <MenuItem value="debit">Money Out (Debits)</MenuItem>
+                  <MenuItem value="credit">Money In</MenuItem>
+                  <MenuItem value="debit">Money Out</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={2}>
-              <FormControl fullWidth>
+            <Grid item xs={12} sm={6} md={4} lg={2}>
+              <FormControl fullWidth size="small">
                 <InputLabel>Status</InputLabel>
                 <Select
                   value={filters.status}
@@ -823,16 +900,27 @@ const TransactionsPage: React.FC = () => {
                       </Grid>
                     </Box>
                   )}
-                  <TableContainer component={Paper}>
-                    <Table>
+                  <TableContainer component={Paper} sx={{ overflowX: 'auto' }}>
+                    <Table sx={{ minWidth: { xs: 600, sm: 750 } }}>
                       <TableHead>
                         <TableRow>
-                          <TableCell>Date</TableCell>
-                          <TableCell>Description</TableCell>
-                          <TableCell>Other Party</TableCell>
-                          <TableCell>Amount</TableCell>
-                          <TableCell>Reference</TableCell>
-                          <TableCell>Actions</TableCell>
+                          <TableCell sx={{ minWidth: 100 }}>Date</TableCell>
+                          <TableCell sx={{ minWidth: 150 }}>Description</TableCell>
+                          {((user?.role as any) === 'Admin' || (user?.role as any) === UserRole.Admin) ? (
+                            <>
+                              <TableCell sx={{ minWidth: 120 }}>From Account</TableCell>
+                              <TableCell sx={{ minWidth: 120 }}>To Account</TableCell>
+                            </>
+                          ) : (
+                            <>
+                              <TableCell sx={{ minWidth: 120 }}>Other Party</TableCell>
+                              <TableCell sx={{ minWidth: 100 }}>Amount</TableCell>
+                            </>
+                          )}
+                          <TableCell sx={{ minWidth: 100 }}>Reference</TableCell>
+                          {((user?.role as any) !== 'Admin' && (user?.role as any) !== UserRole.Admin) && (
+                            <TableCell sx={{ minWidth: 80 }}>Actions</TableCell>
+                          )}
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -867,7 +955,8 @@ const TransactionsPage: React.FC = () => {
           )}
         </CardContent>
       </Card>
-    </Box>
+      </Box>
+    </ResponsiveLayout>
   );
 };
 

@@ -1,6 +1,7 @@
 wwwroot\images\logo.svg
 wwwroot\images\pattern.svg
 wwwroot\receipts\receipt_11_20251117_221706.pdf
+wwwroot\receipts\receipt_11_20251119_145428.pdf
 wwwroot\receipts\receipt_12_20251111_225550.pdf
 wwwroot\receipts\receipt_12_20251111_232638.pdf
 wwwroot\receipts\receipt_12_20251111_232938.pdf

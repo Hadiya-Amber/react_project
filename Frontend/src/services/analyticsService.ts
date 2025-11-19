@@ -135,12 +135,30 @@ export interface CustomerExpenseCategory {
   percentage: number;
 }
 
-// Cache for customer dashboard data with AbortController
-let customerDashboardCache: { data: any; timestamp: number } | null = null;
-let customerCompleteCache: { data: any; timestamp: number } | null = null;
-let currentCustomerRequest: AbortController | null = null;
-let pendingCustomerRequest: Promise<CustomerCompleteDashboardData> | null = null;
+// User-specific cache for customer dashboard data
+let userCacheMap = new Map<string, {
+  dashboardCache: { data: any; timestamp: number } | null;
+  completeCache: { data: any; timestamp: number } | null;
+  currentRequest: AbortController | null;
+  pendingRequest: Promise<CustomerCompleteDashboardData> | null;
+}>();
 const CUSTOMER_CACHE_DURATION = 30000; // 30 seconds
+
+// Helper to get user-specific cache
+const getUserCache = () => {
+  const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+  const userId = token ? JSON.parse(atob(token.split('.')[1])).sub || 'anonymous' : 'anonymous';
+  
+  if (!userCacheMap.has(userId)) {
+    userCacheMap.set(userId, {
+      dashboardCache: null,
+      completeCache: null,
+      currentRequest: null,
+      pendingRequest: null
+    });
+  }
+  return userCacheMap.get(userId)!;
+};
 
 export const analyticsService = {
   // Admin Analytics
@@ -241,15 +259,17 @@ export const analyticsService = {
 
   // Customer Analytics
   async getCustomerDashboardData(): Promise<CustomerDashboardData> {
+    const userCache = getUserCache();
+    
     // Check cache first
-    if (customerDashboardCache && Date.now() - customerDashboardCache.timestamp < CUSTOMER_CACHE_DURATION) {
-      return customerDashboardCache.data;
+    if (userCache.dashboardCache && Date.now() - userCache.dashboardCache.timestamp < CUSTOMER_CACHE_DURATION) {
+      return userCache.dashboardCache.data;
     }
 
     const response = await api.get<ApiResponse<CustomerDashboardData>>('/analytics/customer-dashboard');
     if (response.data.success && response.data.data) {
       // Cache the response
-      customerDashboardCache = {
+      userCache.dashboardCache = {
         data: response.data.data,
         timestamp: Date.now()
       };
@@ -259,46 +279,50 @@ export const analyticsService = {
   },
 
   async getCustomerCompleteDashboardData(): Promise<CustomerCompleteDashboardData> {
+    const userCache = getUserCache();
+    
     // Check cache first
-    if (customerCompleteCache && Date.now() - customerCompleteCache.timestamp < CUSTOMER_CACHE_DURATION) {
-      return customerCompleteCache.data;
+    if (userCache.completeCache && Date.now() - userCache.completeCache.timestamp < CUSTOMER_CACHE_DURATION) {
+      return userCache.completeCache.data;
     }
 
     // Return existing promise if request is already in progress
-    if (pendingCustomerRequest) {
-      return pendingCustomerRequest;
+    if (userCache.pendingRequest) {
+      return userCache.pendingRequest;
     }
 
     // Cancel previous request if still pending
-    if (currentCustomerRequest) {
-      currentCustomerRequest.abort();
+    if (userCache.currentRequest) {
+      userCache.currentRequest.abort();
     }
 
-    currentCustomerRequest = new AbortController();
+    userCache.currentRequest = new AbortController();
     
     // Create and store the pending request promise
-    pendingCustomerRequest = this.fetchCustomerCompleteDashboard();
+    userCache.pendingRequest = this.fetchCustomerCompleteDashboard();
     
     try {
-      const result = await pendingCustomerRequest;
+      const result = await userCache.pendingRequest;
       return result;
     } finally {
       // Clean up the pending request
-      pendingCustomerRequest = null;
-      currentCustomerRequest = null;
+      userCache.pendingRequest = null;
+      userCache.currentRequest = null;
     }
   },
 
   async fetchCustomerCompleteDashboard(): Promise<CustomerCompleteDashboardData> {
+    const userCache = getUserCache();
+    
     try {
       const response = await api.get<ApiResponse<CustomerCompleteDashboardData>>('/analytics/customer-complete-dashboard', {
-        signal: currentCustomerRequest?.signal,
+        signal: userCache.currentRequest?.signal,
         timeout: 6000
       });
       
       if (response.data.success && response.data.data) {
         // Cache the response
-        customerCompleteCache = {
+        userCache.completeCache = {
           data: response.data.data,
           timestamp: Date.now()
         };
@@ -314,8 +338,8 @@ export const analyticsService = {
     } catch (error: any) {
       if (error.name === 'AbortError' || error.code === 'ERR_CANCELED') {
         // Request was cancelled, return cached data if available
-        if (customerCompleteCache) {
-          return customerCompleteCache.data;
+        if (userCache.completeCache) {
+          return userCache.completeCache.data;
         }
         // Return empty fallback data for cancelled requests
         return {
@@ -446,13 +470,8 @@ export const analyticsService = {
 
 // Clear customer caches
 export const clearCustomerDashboardCache = () => {
-  customerDashboardCache = null;
-  customerCompleteCache = null;
-  pendingCustomerRequest = null;
-  if (currentCustomerRequest) {
-    currentCustomerRequest.abort();
-    currentCustomerRequest = null;
-  }
+  // Clear all user caches
+  userCacheMap.clear();
 };
 
 // Export a method to get all admin data in one call

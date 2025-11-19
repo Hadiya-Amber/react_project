@@ -74,3 +74,4 @@ c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Application\obj\Debug\n
 c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBankSimulation.Application.pdb
 c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBankSimulation.Application.genruntimeconfig.cache
 c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\ref\OnlineBankSimulation.Application.dll
+C:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.Application\obj\Debug\net8.0\OnlineBankSimulation.Application.sourcelink.json

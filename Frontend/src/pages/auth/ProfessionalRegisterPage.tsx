@@ -32,8 +32,7 @@ import { useNavigate } from 'react-router-dom';
 import { designTokens } from '@/theme/designTokens';
 import ProfessionalCard from '@/components/ui/ProfessionalCard';
 import ProfessionalButton from '@/components/ui/ProfessionalButton';
-import ProfessionalBackground from '@/components/ui/ProfessionalBackground';
-import FloatingElements from '@/components/ui/FloatingElements';
+
 
 interface RegisterFormData {
   fullName: string;
@@ -100,9 +99,26 @@ const ProfessionalRegisterPage: React.FC = () => {
   ];
 
   return (
-    <ProfessionalBackground variant="auth">
+    <Box
+      sx={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #295b9e 0%, #1e40af 50%, #1d4ed8 100%)',
+        position: 'relative',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)
+          `,
+        },
+      }}
+    >
       <Container maxWidth="xl" sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', py: 4, pt: 12 }}>
-        <FloatingElements />
         
         <Grid container spacing={6} alignItems="center" sx={{ position: 'relative', zIndex: 2 }}>
           {/* Left Side - Branding & Benefits */}
@@ -213,14 +229,14 @@ const ProfessionalRegisterPage: React.FC = () => {
           <Grid item xs={12} lg={7}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <ProfessionalCard
-                variant="glass"
+                variant="elevated"
                 sx={{
                   width: '100%',
                   maxWidth: 600,
                   p: 4,
-                  background: alpha('#FFFFFF', 0.95),
-                  backdropFilter: 'blur(20px)',
-                  border: `1px solid ${alpha('#FFFFFF', 0.3)}`,
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(10px)',
+                  border: `1px solid ${alpha(designTokens.colors.neutral[300], 0.3)}`,
                 }}
               >
                 {/* Form Header */}
@@ -515,7 +531,7 @@ const ProfessionalRegisterPage: React.FC = () => {
           </Grid>
         </Grid>
       </Container>
-    </ProfessionalBackground>
+    </Box>
   );
 };
 

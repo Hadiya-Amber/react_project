@@ -538,3 +538,4 @@ c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.API\obj\Debug\net8.0\On
 c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.API\obj\Debug\net8.0\OnlineBankSimulation.API.genruntimeconfig.cache
 c:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.API\obj\Debug\net8.0\ref\OnlineBankSimulation.API.dll
 C:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\HP\Desktop\Perfect\Backend\OnlineBankSimulation.API\obj\Debug\net8.0\OnlineBankSimulation.API.sourcelink.json

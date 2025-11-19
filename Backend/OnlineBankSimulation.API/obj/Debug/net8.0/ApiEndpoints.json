@@ -466,6 +466,90 @@
   },
   {
     "ContainingType": "OnlineBank.API.Controllers.AdminDashboardController",
+    "Method": "GetAccountTypeDistribution",
+    "RelativePath": "api/admin/analytics/account-type-distribution",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBank.API.Controllers.AdminDashboardController",
+    "Method": "GetBranchPerformance",
+    "RelativePath": "api/admin/analytics/branch-performance",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBank.API.Controllers.AdminDashboardController",
+    "Method": "GetMonthlyRevenue",
+    "RelativePath": "api/admin/analytics/monthly-revenue",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "months",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBank.API.Controllers.AdminDashboardController",
+    "Method": "GetTopCustomers",
+    "RelativePath": "api/admin/analytics/top-customers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBank.API.Controllers.AdminDashboardController",
+    "Method": "GetTransactionTrends",
+    "RelativePath": "api/admin/analytics/transaction-trends",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "days",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBank.API.Controllers.AdminDashboardController",
+    "Method": "GetUserGrowth",
+    "RelativePath": "api/admin/analytics/user-growth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "months",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineBank.API.Controllers.AdminDashboardController",
     "Method": "GetAdminDashboard",
     "RelativePath": "api/admin/dashboard",
     "HttpMethod": "GET",

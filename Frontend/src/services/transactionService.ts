@@ -172,7 +172,18 @@ export const transactionService = {
   },
   // Enhanced methods for user-specific transaction views with caching
   async getUserTransactionHistory(fromDate?: Date, toDate?: Date, accountNumber?: string): Promise<UserTransactionHistoryDto> {
-    const cacheKey = `user_transactions_${fromDate?.toISOString().split('T')[0] || 'all'}_${toDate?.toISOString().split('T')[0] || 'all'}_${accountNumber || 'all'}`;
+    // Get user ID from token or localStorage to make cache user-specific
+    const userToken = localStorage.getItem('token') || sessionStorage.getItem('token');
+    let userId = 'anonymous';
+    try {
+      if (userToken) {
+        const payload = JSON.parse(atob(userToken.split('.')[1]));
+        userId = payload.sub || payload.id || 'anonymous';
+      }
+    } catch {
+      userId = 'anonymous';
+    }
+    const cacheKey = `user_transactions_${userId}_${fromDate?.toISOString().split('T')[0] || 'all'}_${toDate?.toISOString().split('T')[0] || 'all'}_${accountNumber || 'all'}`;
     
     const requestFn = async () => {
       const params = new URLSearchParams();
@@ -214,7 +225,18 @@ export const transactionService = {
     };
 
     try {
-      return await apiOptimizer.cached('dashboard_transaction_summary', requestFn, 2); // 2 minute cache
+      // Get user ID from token to make cache user-specific
+      const userToken = localStorage.getItem('token') || sessionStorage.getItem('token');
+      let userId = 'anonymous';
+      try {
+        if (userToken) {
+          const payload = JSON.parse(atob(userToken.split('.')[1]));
+          userId = payload.sub || payload.id || 'anonymous';
+        }
+      } catch {
+        userId = 'anonymous';
+      }
+      return await apiOptimizer.cached(`dashboard_transaction_summary_${userId}`, requestFn, 2); // 2 minute cache
     } catch (error: any) {
       if (error.response?.status === 401) {
         throw new Error('Please log in to view your dashboard');

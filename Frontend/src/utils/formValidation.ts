@@ -94,7 +94,17 @@ export const formValidation = {
     
     confirmPassword: (password: string) => ({
       required: true,
-      custom: (value: string) => value === password,
+      custom: (value: string) => {
+        if (!value || !password) return false;
+        // Simple length check first to avoid timing attacks
+        if (value.length !== password.length) return false;
+        // Use constant-time comparison for security
+        let result = 0;
+        for (let i = 0; i < value.length; i++) {
+          result |= value.charCodeAt(i) ^ password.charCodeAt(i);
+        }
+        return result === 0;
+      },
       message: 'Passwords do not match'
     }),
     

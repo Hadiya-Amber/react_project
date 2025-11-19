@@ -150,14 +150,45 @@ namespace OnlineBankSimulation.Application.Services
                         var fromBranch = fromAccount != null ? branchList.FirstOrDefault(b => b.Id == fromAccount.BranchId) : null;
                         var toBranch = toAccount != null ? branchList.FirstOrDefault(b => b.Id == toAccount.BranchId) : null;
                         
+                        // For admin view, show the primary user involved in the transaction
+                        string primaryUser;
+                        string primaryBranch;
+                        
+                        switch (t.TransactionType)
+                        {
+                            case TransactionType.Deposit:
+                                // For deposits, show the receiver (to account)
+                                primaryUser = toUser?.FullName ?? "Unknown User";
+                                primaryBranch = toBranch?.BranchName ?? "Unknown Branch";
+                                break;
+                            case TransactionType.Withdrawal:
+                                // For withdrawals, show the sender (from account)
+                                primaryUser = fromUser?.FullName ?? "Unknown User";
+                                primaryBranch = fromBranch?.BranchName ?? "Unknown Branch";
+                                break;
+                            case TransactionType.Transfer:
+                                // For transfers, show the sender (from account)
+                                primaryUser = fromUser?.FullName ?? "Unknown User";
+                                primaryBranch = fromBranch?.BranchName ?? "Unknown Branch";
+                                break;
+                            default:
+                                primaryUser = fromUser?.FullName ?? toUser?.FullName ?? "Unknown User";
+                                primaryBranch = fromBranch?.BranchName ?? toBranch?.BranchName ?? "Unknown Branch";
+                                break;
+                        }
+                        
                         return new
                         {
                             ActivityType = t.TransactionType.ToString(),
                             Description = t.Description ?? $"{t.TransactionType} of ₹{t.Amount:N2}",
                             Timestamp = t.TransactionDate,
-                            UserName = fromUser?.FullName ?? toUser?.FullName ?? "Unknown User",
-                            BranchName = fromBranch?.BranchName ?? toBranch?.BranchName ?? "Unknown Branch",
-                            Amount = t.Amount
+                            UserName = primaryUser,
+                            BranchName = primaryBranch,
+                            Amount = t.Amount,
+                            TransactionType = t.TransactionType.ToString(),
+                            FromAccountNumber = fromAccount?.AccountNumber ?? "",
+                            ToAccountNumber = toAccount?.AccountNumber ?? "",
+                            Status = t.Status.ToString()
                         };
                     })
                     .ToList();
@@ -394,10 +425,10 @@ namespace OnlineBankSimulation.Application.Services
                         switch (t.TransactionType)
                         {
                             case TransactionType.Deposit:
-                                displayType = isReceiver && !isSender ? "Deposit" : "Deposit Sent";
+                                displayType = "Cash Deposit";
                                 break;
                             case TransactionType.Withdrawal:
-                                displayType = "Withdrawal";
+                                displayType = "Cash Withdrawal";
                                 break;
                             case TransactionType.Transfer:
                                 if (isSender && isReceiver)
@@ -412,14 +443,46 @@ namespace OnlineBankSimulation.Application.Services
                                 break;
                         }
                         
+                        // Calculate the correct amount and direction for this user
+                        decimal displayAmount = t.Amount;
+                        int direction = 1; // 1 = Credit (incoming), 0 = Debit (outgoing)
+                        
+                        switch (t.TransactionType)
+                        {
+                            case TransactionType.Deposit:
+                                direction = 1;
+                                break;
+                            case TransactionType.Withdrawal:
+                                direction = 0;
+                                break;
+                            case TransactionType.Transfer:
+                                if (isSender && !isReceiver)
+                                {
+                                    direction = 0; // Sending money
+                                }
+                                else if (isReceiver && !isSender)
+                                {
+                                    direction = 1; // Receiving money
+                                }
+                                else if (isSender && isReceiver)
+                                {
+                                    direction = 1; // Internal transfer
+                                }
+                                break;
+                        }
+                        
                         return new
                         {
                             TransactionId = t.Id,
                             Type = displayType,
-                            Amount = t.Amount,
+                            Amount = displayAmount,
                             Date = t.TransactionDate,
                             Description = t.Description,
-                            Status = t.Status.ToString()
+                            Status = t.Status.ToString(),
+                            Direction = direction,
+                            FromAccountId = t.FromAccountId,
+                            ToAccountId = t.ToAccountId,
+                            TransactionType = (int)t.TransactionType
                         };
                     }).ToList();
 
@@ -635,10 +698,10 @@ namespace OnlineBankSimulation.Application.Services
                             switch (t.TransactionType)
                             {
                                 case TransactionType.Deposit:
-                                    displayType = isReceiver && !isSender ? "Deposit" : "Deposit Sent";
+                                    displayType = "Cash Deposit";
                                     break;
                                 case TransactionType.Withdrawal:
-                                    displayType = "Withdrawal";
+                                    displayType = "Cash Withdrawal";
                                     break;
                                 case TransactionType.Transfer:
                                     if (isSender && isReceiver)
@@ -653,14 +716,53 @@ namespace OnlineBankSimulation.Application.Services
                                     break;
                             }
                             
+                            // Calculate the correct amount and direction for this user
+                            decimal displayAmount = t.Amount;
+                            int direction = 1; // 1 = Credit (incoming), 0 = Debit (outgoing)
+                            
+                            switch (t.TransactionType)
+                            {
+                                case TransactionType.Deposit:
+                                    // For deposits, always positive for receiver
+                                    direction = 1;
+                                    break;
+                                case TransactionType.Withdrawal:
+                                    // For withdrawals, always negative for sender
+                                    direction = 0;
+                                    break;
+                                case TransactionType.Transfer:
+                                    if (isSender && !isReceiver)
+                                    {
+                                        // User is sending money - debit
+                                        direction = 0;
+                                    }
+                                    else if (isReceiver && !isSender)
+                                    {
+                                        // User is receiving money - credit
+                                        direction = 1;
+                                    }
+                                    else if (isSender && isReceiver)
+                                    {
+                                        // Internal transfer - neutral
+                                        direction = 1;
+                                    }
+                                    break;
+                            }
+                            
                             return new
                             {
                                 TransactionId = t.Id,
                                 Type = displayType,
-                                Amount = t.Amount,
+                                Amount = displayAmount,
                                 Date = t.TransactionDate,
-                                Description = t.Description ?? $"{displayType} of ₹{t.Amount:N2}",
-                                Status = t.Status.ToString()
+                                Description = t.Description ?? $"{displayType} of ₹{displayAmount:N2}",
+                                Status = t.Status.ToString(),
+                                Direction = direction,
+                                FromAccountId = t.FromAccountId,
+                                ToAccountId = t.ToAccountId,
+                                FromAccountNumber = "", // Will be populated by frontend
+                                ToAccountNumber = "", // Will be populated by frontend
+                                TransactionType = (int)t.TransactionType
                             };
                         }).ToList(),
                     
@@ -847,14 +949,45 @@ namespace OnlineBankSimulation.Application.Services
                             var fromBranch = fromAccount != null ? branches.FirstOrDefault(b => b.Id == fromAccount.BranchId) : null;
                             var toBranch = toAccount != null ? branches.FirstOrDefault(b => b.Id == toAccount.BranchId) : null;
                             
+                            // For admin view, show the primary user involved in the transaction
+                            string primaryUser;
+                            string primaryBranch;
+                            
+                            switch (t.TransactionType)
+                            {
+                                case TransactionType.Deposit:
+                                    // For deposits, show the receiver (to account)
+                                    primaryUser = toUser?.FullName ?? "Unknown User";
+                                    primaryBranch = toBranch?.BranchName ?? "Unknown Branch";
+                                    break;
+                                case TransactionType.Withdrawal:
+                                    // For withdrawals, show the sender (from account)
+                                    primaryUser = fromUser?.FullName ?? "Unknown User";
+                                    primaryBranch = fromBranch?.BranchName ?? "Unknown Branch";
+                                    break;
+                                case TransactionType.Transfer:
+                                    // For transfers, show the sender (from account)
+                                    primaryUser = fromUser?.FullName ?? "Unknown User";
+                                    primaryBranch = fromBranch?.BranchName ?? "Unknown Branch";
+                                    break;
+                                default:
+                                    primaryUser = fromUser?.FullName ?? toUser?.FullName ?? "Unknown User";
+                                    primaryBranch = fromBranch?.BranchName ?? toBranch?.BranchName ?? "Unknown Branch";
+                                    break;
+                            }
+                            
                             return new
                             {
                                 ActivityType = t.TransactionType.ToString(),
                                 Description = t.Description ?? $"{t.TransactionType} of ₹{t.Amount:N2}",
                                 Timestamp = t.TransactionDate,
-                                UserName = fromUser?.FullName ?? toUser?.FullName ?? "Unknown User",
-                                BranchName = fromBranch?.BranchName ?? toBranch?.BranchName ?? "Unknown Branch",
-                                Amount = t.Amount
+                                UserName = primaryUser,
+                                BranchName = primaryBranch,
+                                Amount = t.Amount,
+                                TransactionType = t.TransactionType.ToString(),
+                                FromAccountNumber = fromAccount?.AccountNumber ?? "",
+                                ToAccountNumber = toAccount?.AccountNumber ?? "",
+                                Status = t.Status.ToString()
                             };
                         })
                         .ToList(),

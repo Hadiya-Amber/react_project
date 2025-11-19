@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode, use }
 import { User, LoginDto } from '@/types/user';
 import { authService } from '@/services/authService';
 import { apiOptimizer } from '@/utils/apiOptimizer';
+import { clearCustomerDashboardCache } from '@/services/analyticsService';
 import { STORAGE_KEYS } from '@/constants';
 
 interface AuthContextType {
@@ -92,6 +93,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.removeItem('authenticatedTabId');
     sessionStorage.removeItem(STORAGE_KEYS.TOKEN);
     sessionStorage.removeItem(STORAGE_KEYS.USER);
+    
+    // Clear API cache and pending requests
+    apiOptimizer.clearCache();
+    apiOptimizer.cancelPending();
+    
+    // Clear analytics service cache
+    clearCustomerDashboardCache();
+    
+    // Clear customer context cache
+    if ((window as any).__customerContextInvalidate) {
+      (window as any).__customerContextInvalidate();
+    }
+    
+    // Clear all localStorage and sessionStorage to remove cached data
+    localStorage.clear();
+    sessionStorage.clear();
+    
     authService.logout();
   };
 

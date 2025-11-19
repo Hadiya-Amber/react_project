@@ -71,11 +71,7 @@ const AppRoutes: React.FC = () => {
       
       <Route path="/register/verify" element={<OtpVerificationPage />} />
       
-      <Route path="/register/complete" element={
-        <AuthLayout>
-          <CompleteRegistrationPage />
-        </AuthLayout>
-      } />
+      <Route path="/register/complete" element={<CompleteRegistrationPage />} />
       
       <Route path="/forgot-password" element={
         <AuthLayout>
