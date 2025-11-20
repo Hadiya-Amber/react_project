@@ -193,7 +193,7 @@ const BranchManagerDashboard: React.FC = React.memo(() => {
                 variant="outlined"
                 fullWidth
                 onClick={() => {
-                  navigate('/accounts/pending');
+                  navigate('/branch-manager/pending-accounts');
                   showNotification('Opening pending account approvals', 'info' as any);
                 }}
               >
@@ -217,7 +217,7 @@ const BranchManagerDashboard: React.FC = React.memo(() => {
                 variant="outlined"
                 fullWidth
                 onClick={() => {
-                  navigate('/transactions/pending');
+                  navigate('/branch-manager/pending-transactions');
                   showNotification('Opening pending transaction approvals', 'info' as any);
                 }}
               >

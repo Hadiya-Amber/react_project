@@ -4,13 +4,12 @@ import { showGlobalError, showGlobalWarning } from '@/utils/globalErrorHandler';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 8000, // Reduced timeout to prevent long waits
+  timeout: 8000, 
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// In-flight request de-duplication
 const pending = new Map<string, AbortController>();
 
 function getRequestKey(config: InternalAxiosRequestConfig) {
@@ -22,7 +21,6 @@ function getRequestKey(config: InternalAxiosRequestConfig) {
 
 function addPending(config: InternalAxiosRequestConfig) {
   const key = getRequestKey(config);
-  // Cancel previous identical pending request to ensure single in-flight call
   if (pending.has(key)) {
     const prev = pending.get(key)!;
     prev.abort();
@@ -38,15 +36,12 @@ function removePending(config: InternalAxiosRequestConfig) {
   if (pending.has(key)) pending.delete(key);
 }
 
-// Request interceptor
 api.interceptors.request.use(
   (config) => {
     addPending(config as InternalAxiosRequestConfig);
     const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
-    const user = localStorage.getItem(STORAGE_KEYS.USER);
-    
+    const user = localStorage.getItem(STORAGE_KEYS.USER); 
 
-    
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -57,7 +52,6 @@ api.interceptors.request.use(
   }
 );
 
-// Helper function to get error message based on status code
 function getErrorMessage(status: number): string {
   switch (status) {
     case 400: return 'Bad request. Please check your input.';
@@ -73,7 +67,6 @@ function getErrorMessage(status: number): string {
   }
 }
 
-// Response interceptor
 api.interceptors.response.use(
   (response: AxiosResponse) => {
     removePending(response.config as InternalAxiosRequestConfig);
@@ -82,7 +75,6 @@ api.interceptors.response.use(
   (error: AxiosError) => {
     if (error.config) removePending(error.config as InternalAxiosRequestConfig);
     
-    // Don't transform canceled requests or bank stats failures
     if (error.name === 'CanceledError' || 
         error.code === 'ERR_CANCELED' ||
         error.config?.url?.includes('bank-stats') ||
@@ -90,9 +82,7 @@ api.interceptors.response.use(
       return Promise.reject(error);
     }
     
-    // Transform error responses to 200 success with error info in body
     if (error.response) {
-      // Handle specific status codes for global notifications BEFORE transformation
       if (error.response.status === 401 && !window.location.pathname.includes('/login')) {
         showGlobalWarning('Session expired. Please login again.');
         localStorage.removeItem(STORAGE_KEYS.TOKEN);
@@ -108,8 +98,7 @@ api.interceptors.response.use(
       } else if (error.response.status >= 500) {
         showGlobalError('Server error. Please try again later.');
       }
-      
-      // Return transformed response as resolved promise
+ 
       return Promise.resolve({
         ...error.response,
         status: 200,
@@ -124,7 +113,6 @@ api.interceptors.response.use(
       });
     }
     
-    // Handle network errors (no response)
     if (error.code === 'ECONNREFUSED' || error.message?.includes('Network Error')) {
       showGlobalError('Unable to connect to server. Please check your internet connection.');
     }

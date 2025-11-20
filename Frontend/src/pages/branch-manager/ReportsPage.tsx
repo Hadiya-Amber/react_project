@@ -55,7 +55,7 @@ const BranchManagerReportsPage: React.FC = () => {
   useEffect(() => {
     // Only show notification if we already have data (coming from cache)
     if (workspaceData) {
-      console.log('Reports page loaded with cached data');
+      // Reports page loaded with cached data
     }
   }, []);
 

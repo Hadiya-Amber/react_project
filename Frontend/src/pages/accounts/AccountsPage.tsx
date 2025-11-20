@@ -13,7 +13,7 @@ import {
   TableRow,
   Paper,
 } from '@mui/material';
-import { Add, Warning } from '@mui/icons-material';
+import { Add, Warning, Refresh } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { accountService } from '@/services/accountService';
@@ -45,62 +45,85 @@ const AccountsPage: React.FC = () => {
     // Not in admin context, ignore
   }
   
+  // Only use customer context for customer users
   try {
-    customerData = useCustomer();
+    if (user?.role === UserRole.Customer) {
+      customerData = useCustomer();
+    }
   } catch {
-    // Not in customer context, ignore
   }
   
   const isAdmin = (user?.role as any) === 'Admin' || user?.role === UserRole.Admin;
+  const isCustomer = (user?.role as any) === 'Customer' || user?.role === UserRole.Customer;
   const { showNotification } = useNotification();
+
+  const handleRefresh = async () => {
+    if (isCustomer && customerData?.refreshData) {
+      try {
+        setIsLoading(true);
+        await customerData.refreshData();
+        showNotification('Accounts refreshed successfully', 'success' as any);
+      } catch (error) {
+        showNotification('Failed to refresh accounts', 'error' as any);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchAccountsData = async () => {
       if (!user) return;
       
+      // Debug logging
+      console.log('AccountsPage - User role:', user.role);
+      console.log('AccountsPage - Customer data:', customerData?.data);
+      console.log('AccountsPage - Customer loading:', customerData?.loading);
+      
       try {
         setError('');
         
-        if ((user?.role as any) === 'Customer' || user?.role === UserRole.Customer) {
-          // For customers, wait for customer data to load
+        if (isCustomer) {
           if (customerData?.loading) {
             setIsLoading(true);
             return;
           }
           
-          // Use consolidated customer data - no additional API calls needed
-          if (customerData?.data?.accountDetails) {
+          if (customerData?.data?.accountDetails && customerData.data.accountDetails.length > 0) {
             setAccounts(customerData.data.accountDetails);
-            
-            // Use consolidated minor account check data
+       
             if (customerData.data.minorAccountCheck) {
               setUserAge(customerData.data.minorAccountCheck.userAge);
               setHasMinorAccounts(customerData.data.minorAccountCheck.hasMinorAccounts);
             }
             setIsLoading(false);
-          } else if (!customerData?.loading) {
-            // Customer data loaded but no accounts
-            setAccounts([]);
-            setIsLoading(false);
+          } else {
+            // Fallback: fetch accounts directly if context data is not available
+            try {
+              setIsLoading(true);
+              const data = await accountService.getMyAccounts();
+              setAccounts(data);
+              setIsLoading(false);
+            } catch (err) {
+              console.error('Failed to fetch customer accounts:', err);
+              setAccounts([]);
+              setIsLoading(false);
+            }
           }
         } else if (isAdmin) {
-          // For admin users, wait for admin dashboard to load
           if (adminDashboardData?.loading) {
             setIsLoading(true);
             return;
           }
           
           if (adminDashboardData?.data?.accounts && adminDashboardData.data.accounts.length > 0) {
-            console.log('Admin accounts loaded:', adminDashboardData.data.accounts.length);
             setAccounts(adminDashboardData.data.accounts);
             setIsLoading(false);
           } else if (!adminDashboardData?.loading) {
-            console.log('No admin accounts found or still loading');
             setAccounts([]);
             setIsLoading(false);
           }
         } else {
-          // For other roles, use cached data if available
           setIsLoading(true);
           const data = await accountService.getAllAccounts();
           setAccounts(data);
@@ -115,8 +138,6 @@ const AccountsPage: React.FC = () => {
     fetchAccountsData();
   }, [user, adminDashboardData?.data, adminDashboardData?.loading, customerData?.data, customerData?.loading]);
 
-
-
   if (isLoading) {
     return <ProfessionalLoader message="Loading accounts..." variant="inline" />;
   }
@@ -129,16 +150,26 @@ const AccountsPage: React.FC = () => {
     <Box>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
         <Typography variant="h4" gutterBottom>
-          {((user?.role as any) === 'Customer' || user?.role === UserRole.Customer) ? 'My Accounts' : 'All Accounts'}
+          {isCustomer ? 'My Accounts' : 'All Accounts'}
         </Typography>
-        {((user?.role as any) === 'Customer' || user?.role === UserRole.Customer) && (
-          <Button
-            variant="contained"
-            startIcon={<Add />}
-            onClick={() => navigate('/accounts/create')}
-          >
-            Create Account
-          </Button>
+        {isCustomer && (
+          <Box display="flex" gap={1}>
+            <Button
+              variant="outlined"
+              startIcon={<Refresh />}
+              onClick={handleRefresh}
+              disabled={isLoading}
+            >
+              Refresh
+            </Button>
+            <Button
+              variant="contained"
+              startIcon={<Add />}
+              onClick={() => navigate('/accounts/create')}
+            >
+              Create Account
+            </Button>
+          </Box>
         )}
       </Box>
 
@@ -209,7 +240,6 @@ const AccountsPage: React.FC = () => {
                       value={account.status}
                       onStatusChange={async (newStatus) => {
                         try {
-                          // Get status label for notification
                           const statusLabels = {
                             0: 'Pending',
                             1: 'Under Review', 
@@ -264,7 +294,7 @@ const AccountsPage: React.FC = () => {
           <Typography variant="h6" color="textSecondary">
             No accounts found
           </Typography>
-          {((user?.role as any) === 'Customer' || user?.role === UserRole.Customer) && (
+          {isCustomer && (
             <Button
               variant="contained"
               startIcon={<Add />}

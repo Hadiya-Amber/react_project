@@ -2,7 +2,6 @@ import { AxiosError } from 'axios';
 
 export const handleApiError = (error: unknown): string => {
   if (error instanceof AxiosError) {
-    // Handle specific HTTP status codes
     if (error.response?.status === 401) {
       return 'Session expired. Please login again.';
     }
@@ -19,7 +18,6 @@ export const handleApiError = (error: unknown): string => {
       return 'Server error. Please try again later.';
     }
     
-    // Try to extract message from response
     const responseMessage = error.response?.data?.message;
     if (responseMessage) {
       return responseMessage;

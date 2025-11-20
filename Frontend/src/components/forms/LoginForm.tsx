@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useFormValidation } from '@/hooks/useFormValidation';
-import { formValidation } from '@/utils/formValidation';
+import { formValidation } from '@/utils/consolidatedValidation';
 import { authService } from '@/services/authService';
 
 interface LoginFormProps {

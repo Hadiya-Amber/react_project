@@ -28,12 +28,24 @@ import { CheckCircle, Cancel, Refresh } from '@mui/icons-material';
 import { useAuth } from '@/context/AuthContext';
 import { useNotification } from '@/context/NotificationContext';
 import { useBranchManagerStore } from '@/hooks/useBranchManagerStore';
+import { useBranchManager } from '@/context/BranchManagerContext';
 import { transactionService, TransactionReadDto } from '@/services/transactionService';
-import { TransactionType } from '@/types';
+import { TransactionType, UserRole } from '@/types';
+import { NotificationType } from '@/types/notification';
 
 const PendingTransactionsPage: React.FC = () => {
   const { user } = useAuth();
-  const storeData = user?.role === 'BranchManager' ? useBranchManagerStore() : { data: null, loading: false, refreshData: null };
+  let storeData = null;
+  let branchManagerContext = null;
+  
+  try {
+    if (user?.role === UserRole.BranchManager) {
+      storeData = useBranchManagerStore();
+      branchManagerContext = useBranchManager();
+    }
+  } catch {
+    // Not in branch manager context
+  }
   const [transactions, setTransactions] = useState<TransactionReadDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<number | null>(null);
@@ -44,7 +56,7 @@ const PendingTransactionsPage: React.FC = () => {
   const { showNotification } = useNotification();
 
   useEffect(() => {
-    if (user?.role === 'BranchManager') {
+    if (user?.role === UserRole.BranchManager) {
       // For branch managers, don't make API calls - direct to dashboard
       setTransactions([]);
       setLoading(false);
@@ -64,7 +76,7 @@ const PendingTransactionsPage: React.FC = () => {
       }
       setTransactions(data);
     } catch (error: any) {
-      showNotification(error.message || 'Failed to fetch pending transactions', 'error');
+      showNotification(error.message || 'Failed to fetch pending transactions', NotificationType.ERROR);
     } finally {
       setLoading(false);
     }
@@ -81,17 +93,13 @@ const PendingTransactionsPage: React.FC = () => {
     if (!selectedTransaction) return;
     
     if (!isApproving && !remarks.trim()) {
-      showNotification('Rejection reason is required', 'error');
+      showNotification('Rejection reason is required', NotificationType.ERROR);
       return;
     }
     
     setActionLoading(selectedTransaction.id);
     try {
-      console.log('Approving transaction:', selectedTransaction.id, {
-        isApproved: isApproving,
-        remarks: remarks || undefined
-      });
-      
+      // Approving transaction
       await transactionService.approveTransaction(selectedTransaction.id, {
         isApproved: isApproving,
         remarks: remarks || undefined
@@ -99,18 +107,18 @@ const PendingTransactionsPage: React.FC = () => {
       
       showNotification(
         `Transaction ${isApproving ? 'approved' : 'rejected'} successfully`,
-        'success'
+        NotificationType.SUCCESS
       );
       
       setApprovalDialog(false);
-      if (user?.role === 'BranchManager' && storeData.refreshData) {
-        storeData.refreshData();
+      if (user?.role === UserRole.BranchManager && branchManagerContext?.loadData) {
+        branchManagerContext.loadData();
       } else {
         fetchPendingTransactions();
       }
     } catch (error: any) {
       console.error('Approval error:', error);
-      showNotification(error.message || 'Action failed', 'error');
+      showNotification(error.message || 'Action failed', NotificationType.ERROR);
     } finally {
       setActionLoading(null);
     }
@@ -171,11 +179,11 @@ const PendingTransactionsPage: React.FC = () => {
           <CardContent>
             <Box textAlign="center" py={4}>
               <Typography variant="h6" color="text.secondary" gutterBottom>
-                {user?.role === 'BranchManager' ? 'Branch Manager Transactions' : 'No Pending Transactions'}
+                {user?.role === UserRole.BranchManager ? 'Branch Manager Transactions' : 'No Pending Transactions'}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {user?.role === 'BranchManager' 
-                  ? `You have ${storeData.data?.pendingItems?.transactions || 0} pending transactions. Please use the dashboard for transaction management.`
+                {user?.role === UserRole.BranchManager 
+                  ? `You have ${storeData?.pendingTransactions?.length || 0} pending transactions. Please use the dashboard for transaction management.`
                   : 'All transactions have been processed'}
               </Typography>
             </Box>

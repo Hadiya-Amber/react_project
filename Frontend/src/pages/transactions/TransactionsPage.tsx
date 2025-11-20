@@ -260,13 +260,14 @@ const TransactionsPage: React.FC = () => {
   try {
     adminDashboardData = useAdminDashboard();
   } catch {
-    // Not in admin context, ignore
   }
   
+  // Only use customer context for customer users
   try {
-    customerData = useCustomer();
+    if (user?.role === UserRole.Customer) {
+      customerData = useCustomer();
+    }
   } catch {
-    // Not in customer context, ignore
   }
   
 
@@ -336,13 +337,13 @@ const TransactionsPage: React.FC = () => {
     try {
       // Check if user is still authenticated
       if (!user?.id) {
-        console.log('User not authenticated, skipping transaction fetch');
+        // User not authenticated, skipping transaction fetch
         return;
       }
       
       // Use consolidated customer data if available (no additional API calls)
       if (customerData?.data?.recentTransactions && !filters.fromDate && !filters.toDate && !selectedAccountNumber) {
-        console.log('Using consolidated customer data for transactions');
+        // Using consolidated customer data for transactions
         const consolidatedData: UserTransactionHistoryDto = {
           transactions: customerData.data.recentTransactions as unknown as TransactionDetailDto[],
           currentBalance: customerData.data.personalInfo?.totalBalance || 0,
@@ -363,7 +364,7 @@ const TransactionsPage: React.FC = () => {
       const toDate = filters.toDate ? new Date(filters.toDate) : undefined;
       const targetAccountNumber = selectedAccountNumber || filters.accountNumber || undefined;
       
-      console.log('Making API call for filtered transactions');
+      // Making API call for filtered transactions
       const data = await transactionService.getUserTransactionHistory(fromDate, toDate, targetAccountNumber);
       setTransactionHistory(data);
       setHasApprovedAccount(true);
@@ -372,7 +373,7 @@ const TransactionsPage: React.FC = () => {
       
       // If it's an authentication error, don't show error notification
       if (error?.response?.status === 401 || error?.response?.status === 403) {
-        console.log('Authentication error, user will be redirected to login');
+        // Authentication error, user will be redirected to login
         setAutoRefresh(false);
         return;
       }

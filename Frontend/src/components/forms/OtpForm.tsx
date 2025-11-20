@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormValidation } from '@/hooks/useFormValidation';
-import { formValidation } from '@/utils/formValidation';
+import { formValidation } from '@/utils/consolidatedValidation';
 import { otpService, OtpPurpose } from '@/services/otpService';
 
 interface OtpFormProps {

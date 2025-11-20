@@ -1,6 +1,6 @@
 import api from '@/api/axios';
 import { ApiResponse } from '@/types';
-import { validationGuard } from '@/utils/validationGuard';
+import { validationGuard } from '@/utils/consolidatedValidation';
 
 export enum OtpPurpose {
   Registration = 0,
@@ -98,7 +98,7 @@ export const otpService = {
           error.message.includes('Network Error') ||
           error.message.includes('404')) {
         // Simulate successful OTP send for demo purposes
-        console.log(`🎮 Demo Mode: OTP sent to ${data.email} (Use OTP: 123456)`)
+        // Demo Mode: OTP sent
         return
       }
       throw error
@@ -153,7 +153,7 @@ export const otpService = {
         // Demo mode OTP verification
         if (data.otpCode === '123456') {
           verifiedEmails.add(data.email)
-          console.log(`🎮 Demo Mode: OTP verified for ${data.email}`)
+          // Demo Mode: OTP verified
           return {
             email: data.email,
             message: 'OTP verified successfully (Demo Mode)',
@@ -209,7 +209,7 @@ export const otpService = {
           error.message.includes('Network Error') ||
           error.message.includes('404')) {
         // Simulate successful OTP resend for demo purposes
-        console.log(`🎮 Demo Mode: OTP resent to ${data.email} (Use OTP: 123456)`)
+        // Demo Mode: OTP resent
         return
       }
       throw error

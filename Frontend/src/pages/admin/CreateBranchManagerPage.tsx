@@ -54,7 +54,7 @@ const CreateBranchManagerPage: React.FC = () => {
       address: '',
       dateOfBirth: '',
       gender: Gender.Male,
-      branchId: location.state?.branchId || 0,
+      branchId: location.state?.branchId || '',
       role: UserRole.BranchManager,
       designation: 'Branch Manager',
       joinDate: new Date().toISOString().split('T')[0],
@@ -71,7 +71,7 @@ const CreateBranchManagerPage: React.FC = () => {
   // Use consolidated data when available
   useEffect(() => {
     if (adminDashboardData.data?.branches && adminDashboardData.data.branchManagerStatuses) {
-      console.log('Using consolidated data - no separate API calls needed');
+      // Using consolidated data - no separate API calls needed
       setBranches(adminDashboardData.data.branches);
       
       const managersSet = new Set<number>();

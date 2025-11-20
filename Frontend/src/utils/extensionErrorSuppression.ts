@@ -26,7 +26,7 @@ const EXTENSION_SCRIPT_PATTERNS = [
   'safari-web-extension'
 ]
 
-// Check if error is from browser extension
+
 export const isExtensionError = (error: string | Error): boolean => {
   const message = typeof error === 'string' ? error : error.message || ''
   return EXTENSION_ERROR_PATTERNS.some(pattern => 
@@ -34,7 +34,6 @@ export const isExtensionError = (error: string | Error): boolean => {
   )
 }
 
-// Check if script is from browser extension
 export const isExtensionScript = (source?: string): boolean => {
   if (!source) return false
   return EXTENSION_SCRIPT_PATTERNS.some(pattern => 
@@ -42,9 +41,7 @@ export const isExtensionScript = (source?: string): boolean => {
   )
 }
 
-// Enhanced error suppression for React 19
 export const suppressExtensionErrors = (): void => {
-  // Suppress unhandled promise rejections from extensions
   window.addEventListener('unhandledrejection', (event) => {
     const reason = event.reason
     if (isExtensionError(reason) || 
@@ -52,7 +49,7 @@ export const suppressExtensionErrors = (): void => {
         (reason?.code === 'ERR_CANCELED') ||
         (reason?.message?.includes('bank stats'))) {
       event.preventDefault()
-      // Only log in development and not for common cancellation errors
+
       if (import.meta.env.DEV && 
           !reason?.message?.includes('bank stats') &&
           reason?.name !== 'CanceledError') {
@@ -61,7 +58,6 @@ export const suppressExtensionErrors = (): void => {
     }
   })
 
-  // Suppress script errors from extensions
   window.addEventListener('error', (event) => {
     if (
       isExtensionError(event.message) || 
@@ -75,7 +71,6 @@ export const suppressExtensionErrors = (): void => {
     }
   })
 
-  // Suppress console errors from extensions (optional)
   if (import.meta.env.PROD) {
     const originalConsoleError = console.error
     console.error = (...args: any[]) => {
@@ -87,7 +82,6 @@ export const suppressExtensionErrors = (): void => {
   }
 }
 
-// Initialize extension error suppression
 export const initExtensionErrorSuppression = (): void => {
   if (typeof window !== 'undefined') {
     suppressExtensionErrors()

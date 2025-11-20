@@ -26,7 +26,8 @@ export const registrationService = {
       }
       throw new Error(response.data.message || 'Registration failed');
     } catch (error: any) {
-      console.error('Registration error details:', {
+      // Registration error occurred - log for debugging
+      console.error('Registration error:', {
         status: error.response?.status,
         data: error.response?.data,
         headers: error.response?.headers,

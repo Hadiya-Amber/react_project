@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineBankSimulation.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1f1b5333374f50e1f1f49ac2ad85c2f39891dc7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+112d358229123e6d2a5f03a61abdb82526041f56")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineBankSimulation.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineBankSimulation.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

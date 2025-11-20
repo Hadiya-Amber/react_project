@@ -1,7 +1,7 @@
 import api from '@/api/axios';
 import { ApiResponse } from '@/types';
-import { STORAGE_KEYS } from '@/constants';
-import { validationGuard } from '@/utils/validationGuard';
+import { STORAGE_KEYS, API_ENDPOINTS, CONTENT_TYPES, ERROR_MESSAGES } from '@/constants';
+import { validationGuard } from '@/utils/consolidatedValidation';
 import { getErrorMessage } from '@/utils/errorHandler';
 
 export interface LoginDto {
@@ -28,7 +28,6 @@ export interface ChangePasswordDto {
 
 export const authService = {
   async login(credentials: LoginDto): Promise<LoginResponse> {
-    // Frontend validation - NO API call if this fails
     validationGuard.rules.loginCredentials(credentials.email, credentials.password);
 
     try {
@@ -36,8 +35,8 @@ export const authService = {
       formData.append('email', credentials.email);
       formData.append('password', credentials.password);
 
-      const response = await api.post<ApiResponse<LoginResponse>>('/auth/login', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<LoginResponse>>(API_ENDPOINTS.AUTH.LOGIN, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success && response.data.data) {
@@ -46,7 +45,7 @@ export const authService = {
         localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.data.data.user));
         return response.data.data;
       }
-      throw new Error('Invalid email or password. Please check your credentials and try again.');
+      throw new Error(ERROR_MESSAGES.INVALID_CREDENTIALS);
     } catch (error: any) {
       throw new Error(getErrorMessage(error));
     }
@@ -58,7 +57,7 @@ export const authService = {
     validationGuard.rules.required(data.newPassword, 'New password');
     validationGuard.rules.required(data.confirmPassword, 'Confirm password');
     if (data.newPassword !== data.confirmPassword) {
-      throw new Error('New password and confirm password do not match');
+      throw new Error(ERROR_MESSAGES.PASSWORD_MISMATCH);
     }
 
     const formData = new FormData();
@@ -66,12 +65,12 @@ export const authService = {
       formData.append(key, value);
     });
 
-    const response = await api.post<ApiResponse<null>>('/registration/change-password', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
+    const response = await api.post<ApiResponse<null>>(API_ENDPOINTS.REGISTRATION.CHANGE_PASSWORD, formData, {
+      headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
     });
 
     if (!response.data.success) {
-      throw new Error(response.data.message || 'Password change failed');
+      throw new Error(response.data.message || ERROR_MESSAGES.PASSWORD_CHANGE_FAILED);
     }
   },
 

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { formValidation, ValidationRule } from '@/utils/formValidation';
+import { formValidation, ValidationRule } from '@/utils/consolidatedValidation';
 
 export interface UseFormValidationProps {
   initialData: Record<string, any>;

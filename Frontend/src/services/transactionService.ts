@@ -1,7 +1,8 @@
 import api from '@/api/axios';
 import { ApiResponse, TransactionType, TransactionStatus } from '@/types';
-import { validationGuard } from '@/utils/validationGuard';
+import { validationGuard } from '@/utils/consolidatedValidation';
 import { apiOptimizer } from '@/utils/apiOptimizer';
+import { API_ENDPOINTS, CONTENT_TYPES, CACHE_KEYS, ERROR_MESSAGES } from '@/constants';
 
 export enum TransactionDirection {
   Credit = 0,  // Money coming in
@@ -191,7 +192,7 @@ export const transactionService = {
       if (toDate) params.append('toDate', toDate.toISOString().split('T')[0]);
       if (accountNumber) params.append('accountNumber', accountNumber);
 
-      const url = params.toString() ? `/transaction/user-history?${params}` : '/transaction/user-history';
+      const url = params.toString() ? `${API_ENDPOINTS.TRANSACTION.USER_HISTORY}?${params}` : API_ENDPOINTS.TRANSACTION.USER_HISTORY;
       const response = await api.get<ApiResponse<UserTransactionHistoryDto>>(url);
       
       if (response.data.success && response.data.data) {
@@ -216,7 +217,7 @@ export const transactionService = {
 
   async getDashboardTransactionSummary(): Promise<DashboardTransactionSummary> {
     const requestFn = async () => {
-      const response = await api.get<ApiResponse<DashboardTransactionSummary>>('/transaction/dashboard-summary');
+      const response = await api.get<ApiResponse<DashboardTransactionSummary>>(API_ENDPOINTS.TRANSACTION.DASHBOARD_SUMMARY);
       
       if (response.data.success && response.data.data) {
         return response.data.data;
@@ -262,8 +263,8 @@ export const transactionService = {
 
       // Debug: Deposit data being sent
 
-      const response = await api.post<ApiResponse<any>>('/transaction/deposit', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<any>>(API_ENDPOINTS.TRANSACTION.DEPOSIT, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success) {
@@ -313,8 +314,8 @@ export const transactionService = {
         }
       });
 
-      const response = await api.post<ApiResponse<any>>('/transaction/withdraw', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<any>>(API_ENDPOINTS.TRANSACTION.WITHDRAW, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success) {
@@ -355,7 +356,7 @@ export const transactionService = {
     validationGuard.rules.required(data.toAccountNumber, 'To account number');
     validationGuard.rules.amount(data.amount);
     if (data.fromAccountNumber === data.toAccountNumber) {
-      throw new Error('Source and destination accounts cannot be the same');
+      throw new Error(ERROR_MESSAGES.SAME_ACCOUNT_TRANSFER);
     }
 
     try {
@@ -366,8 +367,8 @@ export const transactionService = {
         }
       });
 
-      const response = await api.post<ApiResponse<any>>('/transaction/transfer', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<any>>(API_ENDPOINTS.TRANSACTION.TRANSFER, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success) {
@@ -404,18 +405,18 @@ export const transactionService = {
 
   async getPendingTransactions(): Promise<TransactionReadDto[]> {
     const requestFn = async () => {
-      const response = await api.get<ApiResponse<TransactionReadDto[]>>('/transaction/pending-approval');
+      const response = await api.get<ApiResponse<TransactionReadDto[]>>(API_ENDPOINTS.TRANSACTION.PENDING_APPROVAL);
       if (response.data.success && response.data.data) {
         return response.data.data;
       }
       throw new Error(response.data.message || 'Failed to fetch pending transactions');
     };
 
-    return await apiOptimizer.cached('pending_transactions', requestFn, 1); // 1 minute cache
+    return await apiOptimizer.cached(CACHE_KEYS.PENDING_TRANSACTIONS, requestFn, 1); // 1 minute cache
   },
 
   async getPendingTransactionsByBranch(branchId: number): Promise<TransactionReadDto[]> {
-    const response = await api.get<ApiResponse<TransactionReadDto[]>>(`/transaction/pending-approval/branch/${branchId}`);
+    const response = await api.get<ApiResponse<TransactionReadDto[]>>(API_ENDPOINTS.TRANSACTION.PENDING_BY_BRANCH(branchId));
     if (response.data.success && response.data.data) {
       return response.data.data;
     }
@@ -433,8 +434,8 @@ export const transactionService = {
         payload.Remarks = data.remarks.trim();
       }
 
-      const response = await api.put<ApiResponse<null>>(`/transaction/approve/${id}`, payload, {
-        headers: { 'Content-Type': 'application/json' },
+      const response = await api.put<ApiResponse<null>>(API_ENDPOINTS.TRANSACTION.APPROVE(id), payload, {
+        headers: { 'Content-Type': CONTENT_TYPES.JSON },
       });
 
       if (!response.data.success) {
@@ -444,8 +445,8 @@ export const transactionService = {
 
     await apiOptimizer.dedupe(`approve_transaction_${id}`, requestFn);
     // Clear related caches
-    apiOptimizer.clearCache('pending_transactions');
-    apiOptimizer.clearCache('all_transactions');
+    apiOptimizer.clearCache(CACHE_KEYS.PENDING_TRANSACTIONS);
+    apiOptimizer.clearCache(CACHE_KEYS.ALL_TRANSACTIONS);
   },
 
   async getAccountStatement(fromDate?: Date, toDate?: Date): Promise<TransactionReadDto[]> {
@@ -454,7 +455,7 @@ export const transactionService = {
       if (fromDate) params.append('fromDate', fromDate.toISOString().split('T')[0]);
       if (toDate) params.append('toDate', toDate.toISOString().split('T')[0]);
 
-      const url = params.toString() ? `/transaction/statement?${params}` : '/transaction/statement';
+      const url = params.toString() ? `${API_ENDPOINTS.TRANSACTION.STATEMENT}?${params}` : API_ENDPOINTS.TRANSACTION.STATEMENT;
       const response = await api.get<ApiResponse<TransactionReadDto[]>>(url);
       
       if (response.data.success && response.data.data) {
@@ -476,9 +477,9 @@ export const transactionService = {
 
   async downloadReceipt(transactionId: number): Promise<Blob> {
     const payload = { transactionId };
-    const response = await api.post('/transaction/receipt', payload, {
+    const response = await api.post(API_ENDPOINTS.TRANSACTION.RECEIPT, payload, {
       responseType: 'blob',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': CONTENT_TYPES.JSON },
     });
     return response.data;
   },
@@ -488,7 +489,7 @@ export const transactionService = {
     if (fromDate) params.append('fromDate', fromDate.toISOString().split('T')[0]);
     if (toDate) params.append('toDate', toDate.toISOString().split('T')[0]);
 
-    const response = await api.get(`/transaction/pdf-statement?${params}`, {
+    const response = await api.get(`${API_ENDPOINTS.TRANSACTION.PDF_STATEMENT}?${params}`, {
       responseType: 'blob',
     });
     return response.data;
@@ -503,8 +504,8 @@ export const transactionService = {
         }
       });
 
-      const response = await api.post<ApiResponse<any>>('/transaction/bill-payment', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<any>>(API_ENDPOINTS.TRANSACTION.BILL_PAYMENT, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success) {
@@ -548,8 +549,8 @@ export const transactionService = {
         }
       });
 
-      const response = await api.post<ApiResponse<any>>('/transaction/loan-payment', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<any>>(API_ENDPOINTS.TRANSACTION.LOAN_PAYMENT, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success) {
@@ -593,8 +594,8 @@ export const transactionService = {
         }
       });
 
-      const response = await api.post<ApiResponse<any>>('/transaction/investment-deposit', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<any>>(API_ENDPOINTS.TRANSACTION.INVESTMENT_DEPOSIT, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success) {
@@ -638,8 +639,8 @@ export const transactionService = {
         }
       });
 
-      const response = await api.post<ApiResponse<TransactionReadDto[]>>('/transaction/filter', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<TransactionReadDto[]>>(API_ENDPOINTS.TRANSACTION.FILTER, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success && response.data.data) {
@@ -676,18 +677,18 @@ export const transactionService = {
 
   async getAllTransactions(): Promise<TransactionReadDto[]> {
     const requestFn = async () => {
-      const response = await api.get<ApiResponse<TransactionReadDto[]>>('/transaction/all');
+      const response = await api.get<ApiResponse<TransactionReadDto[]>>(API_ENDPOINTS.TRANSACTION.ALL);
       if (response.data.success && response.data.data) {
         return response.data.data;
       }
       throw new Error(response.data.message || 'Failed to fetch all transactions');
     };
 
-    return await apiOptimizer.cached('all_transactions', requestFn, 3); // 3 minute cache
+    return await apiOptimizer.cached(CACHE_KEYS.ALL_TRANSACTIONS, requestFn, 3); // 3 minute cache
   },
 
   async approveTransactionByBranchManager(id: number): Promise<void> {
-    const response = await api.put<ApiResponse<null>>(`/transaction/approve-branch-manager/${id}`);
+    const response = await api.put<ApiResponse<null>>(API_ENDPOINTS.TRANSACTION.APPROVE_BRANCH_MANAGER(id));
     if (!response.data.success) {
       throw new Error(response.data.message || 'Failed to approve transaction');
     }
@@ -698,8 +699,8 @@ export const transactionService = {
       const formData = new FormData();
       formData.append('reason', reason);
 
-      const response = await api.put<ApiResponse<null>>(`/transaction/reverse/${id}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.put<ApiResponse<null>>(API_ENDPOINTS.TRANSACTION.REVERSE(id), formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (!response.data.success) {
@@ -735,7 +736,7 @@ export const transactionService = {
 
   async fixFailedTransactions(): Promise<{ fixedCount: number }> {
     try {
-      const response = await api.post<ApiResponse<{ fixedCount: number }>>('/transaction/fix-failed-transactions');
+      const response = await api.post<ApiResponse<{ fixedCount: number }>>(API_ENDPOINTS.TRANSACTION.FIX_FAILED);
       if (response.data.success && response.data.data) {
         return response.data.data;
       }

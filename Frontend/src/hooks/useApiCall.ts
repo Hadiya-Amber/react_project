@@ -33,7 +33,7 @@ export const useApiCall = (options: UseApiCallOptions = {}): UseApiCallReturn =>
   const execute = useCallback(async (endpoint: string, options: any = {}) => {
     // Prevent duplicate requests
     if (isLoading) {
-      console.warn('API call already in progress');
+      // API call already in progress
       return null;
     }
 
@@ -62,7 +62,7 @@ export const useApiCall = (options: UseApiCallOptions = {}): UseApiCallReturn =>
       return response.data;
     } catch (err: any) {
       if (err.name === 'AbortError') {
-        console.log('Request was aborted');
+
         return null;
       }
 

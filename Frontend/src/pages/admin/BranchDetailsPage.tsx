@@ -159,7 +159,7 @@ const BranchDetailsPage: React.FC = () => {
   }, [id, getBranchDetails, dashboardLoading]);
 
   const handleEditManager = () => {
-    console.log('Edit manager clicked');
+    // Edit manager clicked
     setEditManagerOpen(true);
   };
 
@@ -179,7 +179,7 @@ const BranchDetailsPage: React.FC = () => {
         isActive: true,
       };
       
-      console.log('Sending update data:', updateData);
+      // Sending update data
       await adminService.updateBranchManager(branchDetail.branchManager.id, updateData);
       showNotification('Branch manager updated successfully', 'success');
       setEditManagerOpen(false);
@@ -194,9 +194,9 @@ const BranchDetailsPage: React.FC = () => {
     if (!branchDetail?.branchManager) return;
     
     try {
-      console.log('Resetting password for manager ID:', branchDetail.branchManager.id);
+      // Resetting password for manager
       const result = await adminService.resetBranchManagerPassword(branchDetail.branchManager.id);
-      console.log('Reset password result:', result);
+      // Reset password completed
       showNotification(`New temporary password: ${result.tempPassword}`, 'success');
     } catch (error: any) {
       console.error('Reset password error:', error);

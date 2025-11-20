@@ -10,7 +10,6 @@ import { CustomerProvider } from '@/context/CustomerContext';
 import RoleBasedProvider from '@/components/RoleBasedProvider';
 import { useAuth } from '@/context/AuthContext';
 
-// Pages
 import LoginPage from '@/pages/auth/CleanLoginPage';
 import RegisterPage from '@/pages/auth/RegisterPage';
 import OtpVerificationPage from '@/pages/auth/OtpVerificationPage';
@@ -39,13 +38,16 @@ import ChangePasswordPage from '@/pages/branch-manager/ChangePasswordPage';
 import BranchManagerDashboard from '@/pages/branch-manager/BranchManagerDashboard';
 import BranchManagerPendingTransactionsPage from '@/pages/branch-manager/PendingTransactionsPage';
 import BranchManagerReportsPage from '@/pages/branch-manager/ReportsPage';
+import OptimizedPendingAccountsPage from '@/pages/branch-manager/OptimizedPendingAccountsPage';
+import OptimizedPendingTransactionsPage from '@/pages/branch-manager/OptimizedPendingTransactionsPage';
 
 const AppRoutes: React.FC = () => {
   const { user } = useAuth();
   
-  // Wrap all routes with appropriate provider based on user role
+  // Wrap routes with appropriate providers based on user role
   const ProviderWrapper = ({ children }: { children: React.ReactNode }) => {
-    if (user?.role === 'Customer') {
+    // For customers, wrap with both providers
+    if (user?.role === UserRole.Customer) {
       return (
         <BranchManagerProvider>
           <CustomerProvider>
@@ -54,17 +56,26 @@ const AppRoutes: React.FC = () => {
         </BranchManagerProvider>
       );
     }
-    return <BranchManagerProvider>{children}</BranchManagerProvider>;
+    
+    // For branch managers, only BranchManagerProvider
+    if (user?.role === UserRole.BranchManager) {
+      return (
+        <BranchManagerProvider>
+          {children}
+        </BranchManagerProvider>
+      );
+    }
+    
+    // For admins and others, no context providers (they have their own)
+    return <>{children}</>;
   };
   
   return (
     <ProviderWrapper>
       <Routes>
-      {/* Home Page */}
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
       
-      {/* Public Routes */}
       <Route path="/login" element={<LoginPage />} />
       
       <Route path="/register" element={<RegisterPage />} />
@@ -85,7 +96,6 @@ const AppRoutes: React.FC = () => {
         </AuthLayout>
       } />
 
-      {/* Protected Routes */}
       <Route path="/dashboard" element={
         <ProtectedRoute>
           <DashboardLayout>
@@ -94,20 +104,21 @@ const AppRoutes: React.FC = () => {
         </ProtectedRoute>
       } />
 
-        {/* Branch Manager Routes */}
         <Route path="/branch-manager/*" element={
           <ProtectedRoute allowedRoles={[UserRole.BranchManager]}>
-            <DashboardLayout>
-              <Routes>
-                <Route path="dashboard" element={<BranchManagerDashboard />} />
-                <Route path="pending-transactions" element={<BranchManagerPendingTransactionsPage />} />
-                <Route path="reports" element={<BranchManagerReportsPage />} />
-              </Routes>
-            </DashboardLayout>
+            <BranchManagerProvider>
+              <DashboardLayout>
+                <Routes>
+                  <Route path="dashboard" element={<BranchManagerDashboard />} />
+                  <Route path="pending-accounts" element={<OptimizedPendingAccountsPage />} />
+                  <Route path="pending-transactions" element={<OptimizedPendingTransactionsPage />} />
+                  <Route path="reports" element={<BranchManagerReportsPage />} />
+                </Routes>
+              </DashboardLayout>
+            </BranchManagerProvider>
           </ProtectedRoute>
         } />
 
-      {/* Account Routes */}
       <Route path="/accounts" element={
         <ProtectedRoute>
           <DashboardLayout>
@@ -120,9 +131,11 @@ const AppRoutes: React.FC = () => {
 
       <Route path="/accounts/create" element={
         <ProtectedRoute allowedRoles={[UserRole.Customer]}>
-          <DashboardLayout>
-            <CreateAccountPage />
-          </DashboardLayout>
+          <CustomerProvider>
+            <DashboardLayout>
+              <CreateAccountPage />
+            </DashboardLayout>
+          </CustomerProvider>
         </ProtectedRoute>
       } />
 
@@ -134,7 +147,6 @@ const AppRoutes: React.FC = () => {
           </ProtectedRoute>
         } />
 
-      {/* Transaction Routes */}
       <Route path="/transactions" element={
         <ProtectedRoute>
           <DashboardLayout>
@@ -147,27 +159,33 @@ const AppRoutes: React.FC = () => {
 
       <Route path="/transactions/deposit" element={
         <ProtectedRoute allowedRoles={[UserRole.Customer, UserRole.BranchManager, UserRole.Admin]}>
-          <RoleBasedProvider>
-            <DashboardLayout>
-              <DepositPage />
-            </DashboardLayout>
-          </RoleBasedProvider>
+          <CustomerProvider>
+            <RoleBasedProvider>
+              <DashboardLayout>
+                <DepositPage />
+              </DashboardLayout>
+            </RoleBasedProvider>
+          </CustomerProvider>
         </ProtectedRoute>
       } />
 
       <Route path="/transactions/withdraw" element={
         <ProtectedRoute allowedRoles={[UserRole.Customer]}>
-          <DashboardLayout>
-            <WithdrawPage />
-          </DashboardLayout>
+          <CustomerProvider>
+            <DashboardLayout>
+              <WithdrawPage />
+            </DashboardLayout>
+          </CustomerProvider>
         </ProtectedRoute>
       } />
 
       <Route path="/transactions/transfer" element={
         <ProtectedRoute allowedRoles={[UserRole.Customer]}>
-          <DashboardLayout>
-            <TransferPage />
-          </DashboardLayout>
+          <CustomerProvider>
+            <DashboardLayout>
+              <TransferPage />
+            </DashboardLayout>
+          </CustomerProvider>
         </ProtectedRoute>
       } />
 

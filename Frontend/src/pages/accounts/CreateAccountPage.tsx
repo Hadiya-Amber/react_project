@@ -50,13 +50,11 @@ const CreateAccountPage: React.FC = React.memo(() => {
   });
   const [selectedIdProofType, setSelectedIdProofType] = useState<IdProofType>(IdProofType.Aadhaar);
   const [userAge, setUserAge] = useState<number | null>(null);
-  
-  // Try to get customer data if available
+ 
   let customerData = null;
   try {
     customerData = useCustomer();
   } catch {
-    // Not in customer context, ignore
   }
 
   const {
@@ -118,20 +116,17 @@ const CreateAccountPage: React.FC = React.memo(() => {
   };
 
   useEffect(() => {
-    // Only fetch if no branches loaded from cache
     if (branches.length === 0) {
       fetchBranches();
     }
-  }, []); // Empty dependency array to run only once
+  }, []); 
 
   const fetchUserProfile = useCallback(async () => {
-    // Use consolidated customer data if available
     if (customerData?.data?.minorAccountCheck && !customerData.loading) {
       setUserAge(customerData.data.minorAccountCheck.userAge);
       return;
     }
     
-    // Check cached profile data
     const cachedProfile = sessionStorage.getItem('userProfile');
     const cacheTime = sessionStorage.getItem('userProfileTimestamp');
     const now = Date.now();
@@ -152,7 +147,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
       return;
     }
     
-    // Fallback to API call
     try {
       const response = await api.get('/auth/profile');
       if (response.data.success && response.data.data.dateOfBirth) {
@@ -181,7 +175,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
     }
   }, [user, fetchUserProfile]);
 
-  // Watch for ID proof type changes
   const watchedIdProofType = watch('idProofType');
   useEffect(() => {
     if (watchedIdProofType !== undefined) {
@@ -195,23 +188,19 @@ const CreateAccountPage: React.FC = React.memo(() => {
     setSuccess('');
 
     try {
-      // Frontend validation before API call
       if (!data.idProofDocument || data.idProofDocument.length === 0) {
         throw new Error('ID proof document is required');
       }
-      
-      // Validate file size (max 5MB)
+
       if (data.idProofDocument[0]?.size > 5 * 1024 * 1024) {
         throw new Error('ID proof document must be less than 5MB');
       }
-      
-      // Validate file type
+     
       const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
       if (!allowedTypes.includes(data.idProofDocument[0]?.type)) {
         throw new Error('ID proof document must be PDF, JPG, or PNG format');
       }
-      
-      // Validate all required checkboxes
+
       if (!data.termsAndConditionsAccepted) {
         throw new Error('You must accept the terms and conditions');
       }
@@ -225,13 +214,10 @@ const CreateAccountPage: React.FC = React.memo(() => {
       // Convert form data to proper format
       const formData: CreateAccountDto = {
         ...data,
-        // Convert checkbox values to proper booleans
         termsAndConditionsAccepted: !!data.termsAndConditionsAccepted,
         privacyPolicyAccepted: !!data.privacyPolicyAccepted,
         antiMoneyLaunderingConsent: !!data.antiMoneyLaunderingConsent,
-        // Convert ID proof type enum to string
         idProofType: IdProofTypeLabels[data.idProofType as IdProofType] || 'Aadhaar Card',
-        // Handle file uploads
         idProofDocument: data.idProofDocument[0],
         incomeProofDocument: data.incomeProofDocument?.[0] || undefined,
       };
@@ -261,7 +247,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
             {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
 
             <Grid container spacing={3}>
-              {/* Account Type */}
               <Grid item xs={12} md={6}>
                 <FormControl fullWidth>
                   <InputLabel>Account Type *</InputLabel>
@@ -292,7 +277,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 )}
               </Grid>
 
-              {/* Initial Deposit */}
               <Grid item xs={12} md={6}>
                 <TextField
                   {...register('initialDeposit', {
@@ -314,7 +298,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 />
               </Grid>
 
-              {/* Purpose */}
               <Grid item xs={12}>
                 <TextField
                   {...register('purpose', { required: 'Purpose is required' })}
@@ -327,7 +310,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 />
               </Grid>
 
-              {/* Address Information */}
               <Grid item xs={12}>
                 <Typography variant="h6" gutterBottom>
                   Address Information
@@ -400,7 +382,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 />
               </Grid>
 
-              {/* Branch Selection */}
               <Grid item xs={12} md={6}>
                 <FormControl fullWidth error={!!errors.branchId}>
                   <InputLabel>Select Branch *</InputLabel>
@@ -430,7 +411,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 </FormControl>
               </Grid>
 
-              {/* Employment Information */}
               <Grid item xs={12}>
                 <Typography variant="h6" gutterBottom>
                   Employment Information
@@ -468,7 +448,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 />
               </Grid>
 
-              {/* Emergency Contact */}
               <Grid item xs={12}>
                 <Typography variant="h6" gutterBottom>
                   Emergency Contact
@@ -510,7 +489,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 />
               </Grid>
 
-              {/* ID Proof */}
               <Grid item xs={12}>
                 <Typography variant="h6" gutterBottom>
                   Identity Verification
@@ -636,7 +614,6 @@ const CreateAccountPage: React.FC = React.memo(() => {
                 )}
               </Grid>
 
-              {/* Submit Button */}
               <Grid item xs={12}>
                 <Button
                   type="submit"

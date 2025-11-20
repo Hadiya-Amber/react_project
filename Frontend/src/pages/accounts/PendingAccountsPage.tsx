@@ -90,7 +90,6 @@ const PendingAccountsPage: React.FC = () => {
 
   useEffect(() => {
     if (user?.role === UserRole.BranchManager) {
-      // For branch managers, use workspace data if available
       if (workspaceData?.pendingItems?.accounts) {
         setAccounts(workspaceData.pendingItems.accounts);
       }
@@ -136,9 +135,9 @@ const PendingAccountsPage: React.FC = () => {
       
       setDialogOpen(false);
       if (user?.role === UserRole.BranchManager && refreshData) {
-        refreshData(); // Refresh workspace data
+        refreshData(); 
       } else {
-        fetchPendingAccounts(); // Refresh the list for admins
+        fetchPendingAccounts(); 
       }
     } catch (err) {
       showNotification(
@@ -160,9 +159,9 @@ const PendingAccountsPage: React.FC = () => {
         showNotification('Account closed successfully', NotificationType.SUCCESS);
       }
       if (user?.role === UserRole.BranchManager && refreshData) {
-        refreshData(); // Refresh workspace data
+        refreshData();
       } else {
-        fetchPendingAccounts(); // Refresh the list for admins
+        fetchPendingAccounts(); 
       }
     } catch (err) {
       showNotification(

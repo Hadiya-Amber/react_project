@@ -1,9 +1,10 @@
 import api from '@/api/axios';
 import { ApiResponse, AccountType, AccountStatus, CreateAccountDto } from '@/types';
-import { dataCache, CACHE_KEYS } from '@/utils/dataCache';
-import { validationGuard } from '@/utils/validationGuard';
+import { dataCache } from '@/utils/dataCache';
+import { validationGuard } from '@/utils/consolidatedValidation';
 import { getErrorMessage } from '@/utils/errorHandler';
 import { apiOptimizer } from '@/utils/apiOptimizer';
+import { API_ENDPOINTS, CONTENT_TYPES, CACHE_KEYS } from '@/constants';
 
 export interface AccountReadDto {
   id: number;
@@ -58,8 +59,8 @@ export const accountService = {
         }
       });
 
-      const response = await api.post<ApiResponse<AccountReadDto>>('/account/create', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.post<ApiResponse<AccountReadDto>>(API_ENDPOINTS.ACCOUNT.CREATE, formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (response.data.success && response.data.data) {
@@ -75,7 +76,7 @@ export const accountService = {
 
   async getMyAccounts(useCache: boolean = true): Promise<AccountReadDto[]> {
     const requestFn = async () => {
-      const response = await api.get<ApiResponse<AccountReadDto[]>>('/account/my-accounts');
+      const response = await api.get<ApiResponse<AccountReadDto[]>>(API_ENDPOINTS.ACCOUNT.MY_ACCOUNTS);
       if (response.data.success && response.data.data) {
         return response.data.data;
       }
@@ -84,9 +85,9 @@ export const accountService = {
 
     try {
       if (useCache) {
-        return await apiOptimizer.cached('my_accounts', requestFn, 5); // 5 minute cache
+        return await apiOptimizer.cached(CACHE_KEYS.MY_ACCOUNTS, requestFn, 5); // 5 minute cache
       } else {
-        return await apiOptimizer.dedupe('my_accounts', requestFn);
+        return await apiOptimizer.dedupe(CACHE_KEYS.MY_ACCOUNTS, requestFn);
       }
     } catch (error: any) {
       if (error.response?.data?.message) {
@@ -98,7 +99,7 @@ export const accountService = {
 
   async getAllAccounts(): Promise<AccountReadDto[]> {
     const requestFn = async () => {
-      const response = await api.get<ApiResponse<AccountReadDto[]>>('/account');
+      const response = await api.get<ApiResponse<AccountReadDto[]>>(API_ENDPOINTS.ACCOUNT.ALL);
       if (response.data.success && response.data.data) {
         return response.data.data;
       }
@@ -106,7 +107,7 @@ export const accountService = {
     };
 
     try {
-      return await apiOptimizer.cached('all_accounts', requestFn, 3); // 3 minute cache
+      return await apiOptimizer.cached(CACHE_KEYS.ALL_ACCOUNTS, requestFn, 3); // 3 minute cache
     } catch (error: any) {
       if (error.response?.data?.message) {
         throw new Error(error.response.data.message);
@@ -116,7 +117,7 @@ export const accountService = {
   },
 
   async getAccountById(id: number): Promise<AccountReadDto> {
-    const response = await api.get<ApiResponse<AccountReadDto>>(`/account/${id}`);
+    const response = await api.get<ApiResponse<AccountReadDto>>(API_ENDPOINTS.ACCOUNT.BY_ID(id));
     if (response.data.success && response.data.data) {
       return response.data.data;
     }
@@ -125,18 +126,18 @@ export const accountService = {
 
   async getPendingAccounts(): Promise<AccountReadDto[]> {
     const requestFn = async () => {
-      const response = await api.get<ApiResponse<AccountReadDto[]>>('/account/pending');
+      const response = await api.get<ApiResponse<AccountReadDto[]>>(API_ENDPOINTS.ACCOUNT.PENDING);
       if (response.data.success && response.data.data) {
         return response.data.data;
       }
       throw new Error(response.data.message || 'Failed to fetch pending accounts');
     };
 
-    return await apiOptimizer.cached('pending_accounts', requestFn, 1); // 1 minute cache
+    return await apiOptimizer.cached(CACHE_KEYS.PENDING_ACCOUNTS, requestFn, 1); // 1 minute cache
   },
 
   async getPendingAccountsByBranch(branchId: number): Promise<AccountReadDto[]> {
-    const response = await api.get<ApiResponse<AccountReadDto[]>>(`/account/pending/branch/${branchId}`);
+    const response = await api.get<ApiResponse<AccountReadDto[]>>(API_ENDPOINTS.ACCOUNT.PENDING_BY_BRANCH(branchId));
     if (response.data.success && response.data.data) {
       return response.data.data;
     }
@@ -151,8 +152,8 @@ export const accountService = {
         formData.append('remarks', data.remarks);
       }
 
-      const response = await api.put<ApiResponse<null>>(`/account/verify/${accountId}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await api.put<ApiResponse<null>>(API_ENDPOINTS.ACCOUNT.VERIFY(accountId), formData, {
+        headers: { 'Content-Type': CONTENT_TYPES.FORM_DATA },
       });
 
       if (!response.data.success) {
@@ -163,8 +164,8 @@ export const accountService = {
     try {
       await apiOptimizer.dedupe(`verify_account_${accountId}`, requestFn);
       // Clear related caches
-      apiOptimizer.clearCache('pending_accounts');
-      apiOptimizer.clearCache('all_accounts');
+      apiOptimizer.clearCache(CACHE_KEYS.PENDING_ACCOUNTS);
+      apiOptimizer.clearCache(CACHE_KEYS.ALL_ACCOUNTS);
     } catch (error: any) {
       if (error.response?.data?.message) {
         throw new Error(error.response.data.message);

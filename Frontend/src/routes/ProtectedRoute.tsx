@@ -30,7 +30,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowedRoles 
     const allowedRoleStrings = allowedRoles.map(role => typeof role === 'string' ? role : UserRole[role]);
     
     if (!allowedRoleStrings.includes(userRoleString)) {
-      console.log('Access denied. User role:', userRoleString, 'Allowed roles:', allowedRoleStrings);
+      // Access denied - insufficient permissions
       return <Navigate to="/dashboard" replace />;
     }
   }

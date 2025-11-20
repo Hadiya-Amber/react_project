@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-// React 19 enhanced validation schemas
 export const loginSchema = z.object({
   email: z.string()
     .min(1, 'Please enter your email address')
